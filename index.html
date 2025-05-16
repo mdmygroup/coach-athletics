@@ -16,6 +16,16 @@
             font-family: 'Poppins', sans-serif;
             scroll-behavior: smooth;
         }
+        /* Fade-in animation */
+        .fade-section {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 2s cubic-bezier(0.25, 0.8, 0.25, 1), transform 2s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .fade-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
         .hero {
             background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), 
                         url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
@@ -76,7 +86,7 @@
     </div>
 
     <!-- Navbar -->
-    <nav class="bg-white shadow-md sticky top-0 z-40">
+    <nav class="bg-white shadow-md sticky top-0 z-40 fade-section">
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex justify-between items-center h-20">
                 <div class="flex items-center space-x-4">
@@ -100,7 +110,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="bg-black text-white min-h-screen flex items-center">
+    <section class="bg-black text-white min-h-screen flex items-center fade-section">
   <div class="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
 
     <!-- Text Section -->
@@ -130,7 +140,7 @@
 </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+    <section id="about" class="py-20 bg-gradient-to-br from-gray-50 to-blue-50 fade-section">
         <div class="container mx-auto px-6">
             <div class="flex flex-col lg:flex-row items-center">
                 <div class="lg:w-1/2 mb-12 lg:mb-0 lg:pr-12">
@@ -149,21 +159,56 @@
                 <div class="lg:w-1/2">
                     <span class="text-blue-600 font-bold uppercase tracking-wider">À Propos de Moi</span>
                     <h2 class="text-4xl font-bold mt-2 mb-6">BC Athletics</h2>
-                    <p class="text-gray-700 mb-6">Je m’appelle Benjamin. Je suis préparateur physique, coach sportif & nutritionniste. Jour après jour, j’allie connaissances scientifiques, instructions et enthousiasme pour accompagner mes clients dans leur quête du progrès et pour optimiser les performances de chacun, du sportif amateur au compétiteur confirmé. J’ai fait de ma passion l’accompagnement des autres vers des objectifs physiques, de performance et de
-santé sur le court, moyen et long terme. Ma mission est de vous faire progresser de manière intelligente, durable et individualisée, en m’appuyant
-sur vos caractéristiques morphologiques, vos objectifs et les meilleures données scientifiques
-disponibles.</p>
+                    <p class="text-gray-700 mb-6 text-justify">Je m’appelle Benjamin. Je suis préparateur physique, coach sportif & nutritionniste. Jour après jour, j’allie connaissances scientifiques, instructions et enthousiasme pour accompagner mes clients dans leur quête du progrès et pour optimiser les performances de chacun, du sportif amateur au compétiteur confirmé. J’ai fait de ma passion l’accompagnement des autres vers des objectifs physiques, de performance et de santé sur le court, moyen et long terme. Ma mission est de vous faire progresser de manière intelligente, durable et individualisée, en m’appuyant sur vos caractéristiques morphologiques, vos objectifs et les meilleures données scientifiques disponibles.</p>
                     <p class="text-gray-700 mb-8">Je serais ravi de te faire atteindre tes objectifs. N’hésite pas à me contactez si toutefois tu serais interressé !</p>
                     <div class="grid grid-cols-2 gap-4 mb-8">
                         <div class="stats-card bg-white p-4 rounded-lg shadow-md text-center">
-                            <p class="text-blue-600 font-bold text-3xl">200+</p>
+                            <p class="text-blue-600 font-bold text-3xl">
+                                <span id="clients-count">0</span>+
+                            </p>
                             <p class="text-gray-600">Clients Satisfaits</p>
                         </div>
                         <div class="stats-card bg-white p-4 rounded-lg shadow-md text-center">
-                            <p class="text-blue-600 font-bold text-3xl">100%</p>
+                            <p class="text-blue-600 font-bold text-3xl">
+                                <span id="fidelity-count">0</span>%
+                            </p>
                             <p class="text-gray-600">Fidélisation Client</p>
                         </div>
                     </div>
+                    <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        let hasAnimated = false;
+                        function animateCount(id, end, duration) {
+                            const el = document.getElementById(id);
+                            let start = 0;
+                            const startTime = performance.now();
+                            function update(now) {
+                                const elapsed = now - startTime;
+                                const progress = Math.min(elapsed / duration, 1);
+                                const value = Math.floor(progress * end);
+                                el.textContent = value;
+                                if (progress < 1) {
+                                    requestAnimationFrame(update);
+                                } else {
+                                    el.textContent = end;
+                                }
+                            }
+                            requestAnimationFrame(update);
+                        }
+                        function onScroll() {
+                            const aboutSection = document.getElementById('about');
+                            const rect = aboutSection.getBoundingClientRect();
+                            if (!hasAnimated && rect.top < window.innerHeight && rect.bottom > 0) {
+                                hasAnimated = true;
+                                animateCount('clients-count', 200, 3000);
+                                animateCount('fidelity-count', 100, 3000);
+                                window.removeEventListener('scroll', onScroll);
+                            }
+                        }
+                        window.addEventListener('scroll', onScroll);
+                        onScroll();
+                    });
+                    </script>
                     <a href="#testimonials" class="btn-primary text-white font-bold py-3 px-6 rounded-full inline-flex items-center">
                         Voir les Témoignages <i class="fas fa-chevron-down ml-2"></i>
                     </a>
@@ -172,7 +217,7 @@ disponibles.</p>
         </div>
     </section>
     
-    <section class="hero text-white min-h-screen flex items-center relative">
+    <section class="hero text-white min-h-screen flex items-center relative fade-section">
         <!-- Less dark overlay -->
         <div class="absolute inset-0 bg-black bg-opacity-60"></div>
         <div class="container mx-auto px-6 text-center relative z-10">
@@ -197,7 +242,7 @@ disponibles.</p>
     
 
     <!-- Services Section -->
-    <section id="services" class="py-20 bg-white">
+    <section id="services" class="py-20 bg-white fade-section">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
                 <span class="text-blue-600 font-bold uppercase tracking-wider">Services</span>
@@ -258,54 +303,185 @@ t’accompagne avec un coaching structuré, intelligent et adapté à ta vie, to
     </section>
 
     <!-- Testimonials Section -->
-    <section id="testimonials" class="py-20 bg-blue-600 text-white">
+    <section id="testimonials" class="py-20 bg-blue-600 text-white overflow-hidden w-full fade-section">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
                 <span class="text-blue-300 font-bold uppercase tracking-wider">Témoignages</span>
                 <h2 class="text-4xl font-bold mt-2">Histoires de Réussite de Clients</h2>
                 <p class="text-blue-200 max-w-2xl mx-auto mt-4">Écoutez ceux qui ont transformé leur vie grâce à mes programmes d'entraînement.</p>
             </div>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <div class="testimonial-card p-8 rounded-xl">
-                    <div class="flex items-center mb-6">
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client" class="rounded-full h-14 w-14 mr-4 border-2 border-blue-400">
-                        <div>
-                            <p class="font-bold text-lg">Jean Dupont</p>
-                            <p class="text-blue-300">Membre Fitness Park</p>
-                            <div class="flex mt-1">
-                                <i class="fas fa-star text-yellow-300"></i>
-                                <i class="fas fa-star text-yellow-300"></i>
-                                <i class="fas fa-star text-yellow-300"></i>
-                                <i class="fas fa-star text-yellow-300"></i>
-                                <i class="fas fa-star text-yellow-300"></i>
+            <div class="relative group">
+                <div class="overflow-hidden w-full">
+                    <div class="flex space-x-8 animate-scroll-testimonials group-hover:paused-testimonials">
+                        <!-- Testimonial 1 -->
+                        <div class="testimonial-card p-8 rounded-xl min-w-[350px] max-w-md">
+                            <div class="flex items-center mb-6">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client" class="rounded-full h-14 w-14 mr-4 border-2 border-blue-400">
+                                <div>
+                                    <p class="font-bold text-lg">Jean Dupont</p>
+                                    <p class="text-blue-300">Membre Fitness Park</p>
+                                    <div class="flex mt-1">
+                                        <i class="fas fa-star text-yellow-300"></i>
+                                        <i class="fas fa-star text-yellow-300"></i>
+                                        <i class="fas fa-star text-yellow-300"></i>
+                                        <i class="fas fa-star text-yellow-300"></i>
+                                        <i class="fas fa-star text-yellow-300"></i>
+                                    </div>
+                                </div>
                             </div>
+                            <p class="italic text-blue-100">"Le programme de musculation de Benjamin a complètement transformé ma silhouette. En seulement 6 mois, j'ai pris 8 kg de muscle tout en réduisant mon pourcentage de graisse corporelle. Son attention à la forme et sa programmation progressive sont inégalées."</p>
+                        </div>
+                        <!-- Testimonial 2 -->
+                        <div class="testimonial-card p-8 rounded-xl min-w-[350px] max-w-md">
+                            <div class="flex items-center mb-6">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client" class="rounded-full h-14 w-14 mr-4 border-2 border-blue-400">
+                                <div>
+                                    <p class="font-bold text-lg">Marie Leclerc</p>
+                                    <p class="text-blue-300">Participante aux Séances de Groupe</p>
+                                    <div class="flex mt-1">
+                                        <i class="fas fa-star text-yellow-300"></i>
+                                        <i class="fas fa-star text-yellow-300"></i>
+                                        <i class="fas fa-star text-yellow-300"></i>
+                                        <i class="fas fa-star text-yellow-300"></i>
+                                        <i class="fas fa-star text-yellow-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="italic text-blue-100">"Le plan nutritionnel fourni par Benjamin était révolutionnaire. J'ai perdu 12 kg tout en maintenant ma masse musculaire et en ayant plus d'énergie que jamais. Sa connaissance de la nutrition sportive est exceptionnelle."</p>
+                        </div>
+                        <!-- Testimonial 3 -->
+                        <div class="testimonial-card p-8 rounded-xl min-w-[350px] max-w-md">
+                            <div class="flex items-center mb-6">
+                                <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Client" class="rounded-full h-14 w-14 mr-4 border-2 border-blue-400">
+                                <div>
+                                    <p class="font-bold text-lg">Lucas Martin</p>
+                                    <p class="text-blue-300">Coureur Amateur</p>
+                                    <div class="flex mt-1">
+                                        <i class="fas fa-star text-yellow-300"></i>
+                                        <i class="fas fa-star text-yellow-300"></i>
+                                        <i class="fas fa-star text-yellow-300"></i>
+                                        <i class="fas fa-star text-yellow-300"></i>
+                                        <i class="fas fa-star text-yellow-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="italic text-blue-100">"Grâce au coaching course à pied, j'ai battu mon record personnel sur 10 km et j'ai appris à structurer mes entraînements intelligemment. Benjamin est à l'écoute et très motivant."</p>
+                        </div>
+                        <!-- Testimonial 4 -->
+                        <div class="testimonial-card p-8 rounded-xl min-w-[350px] max-w-md">
+                            <div class="flex items-center mb-6">
+                                <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Client" class="rounded-full h-14 w-14 mr-4 border-2 border-blue-400">
+                                <div>
+                                    <p class="font-bold text-lg">Sophie Bernard</p>
+                                    <p class="text-blue-300">Cliente Nutrition</p>
+                                    <div class="flex mt-1">
+                                        <i class="fas fa-star text-yellow-300"></i>
+                                        <i class="fas fa-star text-yellow-300"></i>
+                                        <i class="fas fa-star text-yellow-300"></i>
+                                        <i class="fas fa-star text-yellow-300"></i>
+                                        <i class="fas fa-star text-yellow-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="italic text-blue-100">"J'ai enfin trouvé un accompagnement nutritionnel qui me correspond. Les conseils sont personnalisés et j'ai vu des résultats durables sans frustration."</p>
+                        </div>
+                        <!-- Repeat testimonials for seamless loop -->
+                        <div class="testimonial-card p-8 rounded-xl min-w-[350px] max-w-md">
+                            <div class="flex items-center mb-6">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client" class="rounded-full h-14 w-14 mr-4 border-2 border-blue-400">
+                                <div>
+                                    <p class="font-bold text-lg">Jean Dupont</p>
+                                    <p class="text-blue-300">Membre Fitness Park</p>
+                                    <div class="flex mt-1">
+                                        <i class="fas fa-star text-yellow-300"></i>
+                                        <i class="fas fa-star text-yellow-300"></i>
+                                        <i class="fas fa-star text-yellow-300"></i>
+                                        <i class="fas fa-star text-yellow-300"></i>
+                                        <i class="fas fa-star text-yellow-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="italic text-blue-100">"Le programme de musculation de Benjamin a complètement transformé ma silhouette. En seulement 6 mois, j'ai pris 8 kg de muscle tout en réduisant mon pourcentage de graisse corporelle. Son attention à la forme et sa programmation progressive sont inégalées."</p>
+                        </div>
+                        <div class="testimonial-card p-8 rounded-xl min-w-[350px] max-w-md">
+                            <div class="flex items-center mb-6">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client" class="rounded-full h-14 w-14 mr-4 border-2 border-blue-400">
+                                <div>
+                                    <p class="font-bold text-lg">Marie Leclerc</p>
+                                    <p class="text-blue-300">Participante aux Séances de Groupe</p>
+                                    <div class="flex mt-1">
+                                        <i class="fas fa-star text-yellow-300"></i>
+                                        <i class="fas fa-star text-yellow-300"></i>
+                                        <i class="fas fa-star text-yellow-300"></i>
+                                        <i class="fas fa-star text-yellow-300"></i>
+                                        <i class="fas fa-star text-yellow-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="italic text-blue-100">"Le plan nutritionnel fourni par Benjamin était révolutionnaire. J'ai perdu 12 kg tout en maintenant ma masse musculaire et en ayant plus d'énergie que jamais. Sa connaissance de la nutrition sportive est exceptionnelle."</p>
+                        </div>
+                        <div class="testimonial-card p-8 rounded-xl min-w-[350px] max-w-md">
+                            <div class="flex items-center mb-6">
+                                <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Client" class="rounded-full h-14 w-14 mr-4 border-2 border-blue-400">
+                                <div>
+                                    <p class="font-bold text-lg">Lucas Martin</p>
+                                    <p class="text-blue-300">Coureur Amateur</p>
+                                    <div class="flex mt-1">
+                                        <i class="fas fa-star text-yellow-300"></i>
+                                        <i class="fas fa-star text-yellow-300"></i>
+                                        <i class="fas fa-star text-yellow-300"></i>
+                                        <i class="fas fa-star text-yellow-300"></i>
+                                        <i class="fas fa-star text-yellow-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="italic text-blue-100">"Grâce au coaching course à pied, j'ai battu mon record personnel sur 10 km et j'ai appris à structurer mes entraînements intelligemment. Benjamin est à l'écoute et très motivant."</p>
+                        </div>
+                        <div class="testimonial-card p-8 rounded-xl min-w-[350px] max-w-md">
+                            <div class="flex items-center mb-6">
+                                <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Client" class="rounded-full h-14 w-14 mr-4 border-2 border-blue-400">
+                                <div>
+                                    <p class="font-bold text-lg">Sophie Bernard</p>
+                                    <p class="text-blue-300">Cliente Nutrition</p>
+                                    <div class="flex mt-1">
+                                        <i class="fas fa-star text-yellow-300"></i>
+                                        <i class="fas fa-star text-yellow-300"></i>
+                                        <i class="fas fa-star text-yellow-300"></i>
+                                        <i class="fas fa-star text-yellow-300"></i>
+                                        <i class="fas fa-star text-yellow-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="italic text-blue-100">"J'ai enfin trouvé un accompagnement nutritionnel qui me correspond. Les conseils sont personnalisés et j'ai vu des résultats durables sans frustration."</p>
                         </div>
                     </div>
-                    <p class="italic text-blue-100">"Le programme de musculation de Benjamin a complètement transformé ma silhouette. En seulement 6 mois, j'ai pris 8 kg de muscle tout en réduisant mon pourcentage de graisse corporelle. Son attention à la forme et sa programmation progressive sont inégalées."</p>
-                </div>
-                <div class="testimonial-card p-8 rounded-xl">
-                    <div class="flex items-center mb-6">
-                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client" class="rounded-full h-14 w-14 mr-4 border-2 border-blue-400">
-                        <div>
-                            <p class="font-bold text-lg">Marie Leclerc</p>
-                            <p class="text-blue-300">Participante aux Séances de Groupe</p>
-                            <div class="flex mt-1">
-                                <i class="fas fa-star text-yellow-300"></i>
-                                <i class="fas fa-star text-yellow-300"></i>
-                                <i class="fas fa-star text-yellow-300"></i>
-                                <i class="fas fa-star text-yellow-300"></i>
-                                <i class="fas fa-star text-yellow-300"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="italic text-blue-100">"Le plan nutritionnel fourni par Benjamin était révolutionnaire. J'ai perdu 12 kg tout en maintenant ma masse musculaire et en ayant plus d'énergie que jamais. Sa connaissance de la nutrition sportive est exceptionnelle."</p>
                 </div>
             </div>
         </div>
+        <style>
+            @keyframes scroll-testimonials {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+            }
+            .animate-scroll-testimonials {
+            width: max-content;
+            animation: scroll-testimonials 80s linear infinite;
+            }
+            .group:hover .animate-scroll-testimonials {
+            animation-play-state: paused;
+            }
+            @media (max-width: 1024px) {
+            .animate-scroll-testimonials > div {
+                min-width: 280px;
+            }
+            }
+        </style>
     </section>
-    <section id="certifications" class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
-  <div class="container mx-auto px-6">
-    <div class="flex flex-col lg:flex-row items-center lg:flex-row-reverse">
+    
+    <!-- Certifications Section -->
+    <section id="certifications" class="py-20 bg-gradient-to-br from-gray-50 to-blue-50 fade-section">
+      <div class="container mx-auto px-6">
+        <div class="flex flex-col lg:flex-row items-center lg:flex-row-reverse">
 
       <!-- Image -->
       <div class="lg:w-1/2 mb-12 lg:mb-0 lg:pl-12">
@@ -347,16 +523,26 @@ t’accompagne avec un coaching structuré, intelligent et adapté à ta vie, to
 
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-white">
+    <section id="contact" class="py-20 bg-white fade-section">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
                 <span class="text-blue-600 font-bold uppercase tracking-wider">Contact</span>
                 <h2 class="text-4xl font-bold mt-2">Prêt(e) à vous Transformer ?</h2>
                 <p class="text-gray-600 max-w-2xl mx-auto mt-4">Contactez-moi pour planifier votre première séance ou poser des questions sur mes programmes d'entraînement.</p>
             </div>
-            <div class="flex flex-col items-center">
-                <div class="w-full max-w-xl">
-                    <div class="bg-gray-50 p-8 rounded-xl shadow-lg h-full">
+            <div class="flex flex-col lg:flex-row items-center lg:items-stretch gap-10">
+                <!-- Google Map -->
+                <div class="w-full lg:w-1/2 mb-10 lg:mb-0">
+                    <div class="h-full rounded-xl overflow-hidden shadow-lg">
+                        <iframe
+                            src="https://www.google.com/maps?q=Fitness+Park+Fleury-Mérogis,+51+Av.+de+l'Hurepoix,+91700+Fleury-Mérogis,+France&output=embed"
+                            width="100%" height="100%" style="min-height:420px; border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+                <!-- Contact Info -->
+                <div class="w-full lg:w-1/2 flex items-center">
+                    <div class="bg-gray-50 p-8 rounded-xl shadow-lg w-full">
                         <h3 class="text-2xl font-bold mb-6">Informations de Contact</h3>
                         <div class="space-y-6">
                             <div class="flex items-start">
@@ -383,7 +569,9 @@ t’accompagne avec un coaching structuré, intelligent et adapté à ta vie, to
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-gray-800">Email</h4>
-                                    <p class="text-gray-600">contact@bcathletics.fr</p>
+                                    <p class="text-gray-600">
+                                        <a href="mailto:vrainadal@hotmail.fr" class="hover:text-blue-600 transition">vrainadal@hotmail.fr</a>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -417,13 +605,12 @@ t’accompagne avec un coaching structuré, intelligent et adapté à ta vie, to
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white pt-16 pb-8">
+    <footer class="bg-gray-900 text-white pt-16 pb-8 fade-section">
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
                 <div>
@@ -474,7 +661,9 @@ t’accompagne avec un coaching structuré, intelligent et adapté à ta vie, to
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-envelope mr-3 text-blue-400"></i>
-                            <span>contact@bcathletics.fr</span>
+                            <span>
+                                <a href="mailto:vrainadal@hotmail.fr" class="hover:text-blue-400 transition">vrainadal@hotmail.fr</a>
+                            </span>
                         </li>
                     </ul>
                 </div>
@@ -482,12 +671,38 @@ t’accompagne avec un coaching structuré, intelligent et adapté à ta vie, to
             <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
                 <p class="text-gray-500 text-sm mb-4 md:mb-0">&copy; 2025 BC Athletics. Tous droits réservés.</p>
                 <div class="flex space-x-6">
-                    <a href="#" class="text-gray-500 hover:text-blue-400 text-sm transition duration-300">Politique de Confidentialité</a>
-                    <a href="#" class="text-gray-500 hover:text-blue-400 text-sm transition duration-300">Conditions d'Utilisation</a>
-                    <a href="#" class="text-gray-500 hover:text-blue-400 text-sm transition duration-300">FAQ</a>
                 </div>
+            </div>
+            <!-- Subtle credit note -->
+            <div class="mt-6 text-center">
+                <p class="text-xs text-gray-500">
+                    Site réalisé par 
+                    <a href="https://mdmygroup.com" target="_blank" rel="noopener" class="underline hover:text-blue-400 transition">
+                        MDMY Group
+                    </a>
+                </p>
             </div>
         </div>
     </footer>
+    <script>
+    // Fade-in on scroll for all .fade-section elements
+    document.addEventListener('DOMContentLoaded', function () {
+        const fadeSections = document.querySelectorAll('.fade-section');
+        const reveal = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        };
+        const observer = new window.IntersectionObserver(reveal, {
+            threshold: 0.15
+        });
+        fadeSections.forEach(section => {
+            observer.observe(section);
+        });
+    });
+    </script>
 </body>
 </html>
