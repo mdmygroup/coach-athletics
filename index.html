@@ -16,6 +16,16 @@
             font-family: 'Poppins', sans-serif;
             scroll-behavior: smooth;
         }
+        /* Fade-in animation */
+        .fade-section {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 2s cubic-bezier(0.25, 0.8, 0.25, 1), transform 2s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .fade-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
         .hero {
             background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), 
                         url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
@@ -76,7 +86,7 @@
     </div>
 
     <!-- Navbar -->
-    <nav class="bg-white shadow-md sticky top-0 z-40">
+    <nav class="bg-white shadow-md sticky top-0 z-40 fade-section">
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex justify-between items-center h-20">
                 <div class="flex items-center space-x-4">
@@ -100,7 +110,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="bg-black text-white min-h-screen flex items-center">
+    <section class="bg-black text-white min-h-screen flex items-center fade-section">
   <div class="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
 
     <!-- Text Section -->
@@ -130,7 +140,7 @@
 </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+    <section id="about" class="py-20 bg-gradient-to-br from-gray-50 to-blue-50 fade-section">
         <div class="container mx-auto px-6">
             <div class="flex flex-col lg:flex-row items-center">
                 <div class="lg:w-1/2 mb-12 lg:mb-0 lg:pr-12">
@@ -207,7 +217,7 @@
         </div>
     </section>
     
-    <section class="hero text-white min-h-screen flex items-center relative">
+    <section class="hero text-white min-h-screen flex items-center relative fade-section">
         <!-- Less dark overlay -->
         <div class="absolute inset-0 bg-black bg-opacity-60"></div>
         <div class="container mx-auto px-6 text-center relative z-10">
@@ -232,7 +242,7 @@
     
 
     <!-- Services Section -->
-    <section id="services" class="py-20 bg-white">
+    <section id="services" class="py-20 bg-white fade-section">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
                 <span class="text-blue-600 font-bold uppercase tracking-wider">Services</span>
@@ -293,7 +303,7 @@ t’accompagne avec un coaching structuré, intelligent et adapté à ta vie, to
     </section>
 
     <!-- Testimonials Section -->
-    <section id="testimonials" class="py-20 bg-blue-600 text-white overflow-hidden w-full">
+    <section id="testimonials" class="py-20 bg-blue-600 text-white overflow-hidden w-full fade-section">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
                 <span class="text-blue-300 font-bold uppercase tracking-wider">Témoignages</span>
@@ -469,7 +479,7 @@ t’accompagne avec un coaching structuré, intelligent et adapté à ta vie, to
     </section>
     
     <!-- Certifications Section -->
-    <section id="certifications" class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+    <section id="certifications" class="py-20 bg-gradient-to-br from-gray-50 to-blue-50 fade-section">
       <div class="container mx-auto px-6">
         <div class="flex flex-col lg:flex-row items-center lg:flex-row-reverse">
 
@@ -513,7 +523,7 @@ t’accompagne avec un coaching structuré, intelligent et adapté à ta vie, to
 
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-white">
+    <section id="contact" class="py-20 bg-white fade-section">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
                 <span class="text-blue-600 font-bold uppercase tracking-wider">Contact</span>
@@ -600,7 +610,7 @@ t’accompagne avec un coaching structuré, intelligent et adapté à ta vie, to
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white pt-16 pb-8">
+    <footer class="bg-gray-900 text-white pt-16 pb-8 fade-section">
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
                 <div>
@@ -674,5 +684,25 @@ t’accompagne avec un coaching structuré, intelligent et adapté à ta vie, to
             </div>
         </div>
     </footer>
+    <script>
+    // Fade-in on scroll for all .fade-section elements
+    document.addEventListener('DOMContentLoaded', function () {
+        const fadeSections = document.querySelectorAll('.fade-section');
+        const reveal = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        };
+        const observer = new window.IntersectionObserver(reveal, {
+            threshold: 0.15
+        });
+        fadeSections.forEach(section => {
+            observer.observe(section);
+        });
+    });
+    </script>
 </body>
 </html>
