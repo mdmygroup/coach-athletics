@@ -24,11 +24,11 @@
             background-attachment: fixed;
         }
         .service-card {
-            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
         .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
         .testimonial-card {
             background: rgba(255, 255, 255, 0.1);
@@ -90,7 +90,7 @@
                     <a href="#testimonials" class="nav-link text-gray-700 font-medium hover:text-blue-600">Témoignages</a>
                     <a href="#contact" class="nav-link text-gray-700 font-medium hover:text-blue-600">Contact</a>
                 </div>
-                <div class="lg:hidden"> 
+                <div class="lg:hidden">
                     <button class="text-gray-700 focus:outline-none">
                         <i class="fas fa-bars text-2xl"></i>
                     </button>
@@ -100,78 +100,34 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero text-white min-h-screen flex items-center">
-        <div class="container mx-auto px-6 text-center">
-            <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">Élevez Votre <span class="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">Performance</span></h1>
-            <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto">Coach certifié basé à Paris, spécialisé en musculation, nutrition et conditionnement physique. Partenaire de Fitness Park pour des expériences d'entraînement premium.</p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#contact" class="btn-primary text-white font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl">
-                    Réserver une Séance <i class="fas fa-calendar-check ml-2"></i>
-                </a>
-                <a href="#services" class="bg-white text-blue-600 font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl transition duration-300">
-                    Explorer les Services <i class="fas fa-chevron-right ml-2"></i>
-                </a>
-            </div>
-        </div>
-    </section>
+    <section class="bg-black text-white min-h-screen flex items-center">
+  <div class="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
 
-    <!-- Services Section -->
-    <section id="services" class="py-20 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <span class="text-blue-600 font-bold uppercase tracking-wider">Services</span>
-                <h2 class="text-4xl font-bold mt-2">Programmes d'Entraînement Transformateurs</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto mt-4">Solutions personnalisées conçues pour vous aider à atteindre vos objectifs fitness de manière efficace et durable.</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="service-card bg-gray-50 p-8 rounded-xl border border-gray-200">
-                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-dumbbell text-blue-600 text-2xl"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4">Musculation</h3>
-                    <p class="text-gray-600 mb-6">Programmes de force personnalisés pour développer la masse musculaire, augmenter la puissance et améliorer la silhouette globale.</p>
-                    <ul class="space-y-2 mb-6">
-                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> Plans d'entraînement personnalisés</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> Techniques de surcharge progressive</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> Correction et optimisation de la forme</li>
-                    </ul>
-                    <a href="#contact" class="text-blue-600 font-medium inline-flex items-center">
-                        En savoir plus <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-                <div class="service-card bg-gray-50 p-8 rounded-xl border border-gray-200">
-                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-utensils text-blue-600 text-2xl"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4">Planification Nutritionnelle</h3>
-                    <p class="text-gray-600 mb-6">Stratégies nutritionnelles fondées sur la science pour optimiser les performances et atteindre vos objectifs de composition corporelle.</p>
-                    <ul class="space-y-2 mb-6">
-                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> Optimisation des macronutriments</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> Conseils de planification des repas</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> Recommandations de suppléments</li>
-                    </ul>
-                    <a href="#contact" class="text-blue-600 font-medium inline-flex items-center">
-                        En savoir plus <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-                <div class="service-card bg-gray-50 p-8 rounded-xl border border-gray-200">
-                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-heartbeat text-blue-600 text-2xl"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4">Conditionnement Physique</h3>
-                    <p class="text-gray-600 mb-6">Programmes complets de conditionnement pour améliorer l'endurance, la mobilité et les performances athlétiques.</p>
-                    <ul class="space-y-2 mb-6">
-                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> Conditionnement métabolique</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> Entraînement spécifique au sport</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> Protocoles de récupération</li>
-                    </ul>
-                    <a href="#contact" class="text-blue-600 font-medium inline-flex items-center">
-                        En savoir plus <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Text Section -->
+    <div class="text-left">
+      <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+        Élevez Votre <span class="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">Performance</span>
+      </h1>
+      <p class="text-xl md:text-2xl mb-10 max-w-xl">
+        Coach certifié basé en région parisienne, spécialisé en musculation, nutrition et conditionnement physique. Partenaire de Fitness Park pour des expériences d'entraînement premium.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="#contact" class="btn-primary text-white font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl">
+          Réserver une Séance <i class="fas fa-calendar-check ml-2"></i>
+        </a>
+        <a href="#services" class="bg-white text-blue-600 font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl transition duration-300">
+          Explorer les Services <i class="fas fa-chevron-right ml-2"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Image Section -->
+    <div>
+      <img src="/bc-athletics/assets/Profile.png" alt="Coach Fitness Hero Image" class="w-full h-auto rounded-2xl shadow-lg" />
+    </div>
+
+  </div>
+</section>
 
     <!-- About Section -->
     <section id="about" class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
@@ -179,7 +135,7 @@
             <div class="flex flex-col lg:flex-row items-center">
                 <div class="lg:w-1/2 mb-12 lg:mb-0 lg:pr-12">
                     <div class="relative">
-                        <img src="assets/img/coach_lunge.jpg" 
+                        <img src="/bc-athletics/assets/Coach doing lunges.jpg" 
                              alt="BC Athletics" 
                              class="rounded-xl shadow-2xl w-full max-w-lg">
                         <div class="absolute -bottom-6 -right-1 bg-white p-6 rounded-xl shadow-lg">
@@ -193,11 +149,14 @@
                 <div class="lg:w-1/2">
                     <span class="text-blue-600 font-bold uppercase tracking-wider">À Propos de Moi</span>
                     <h2 class="text-4xl font-bold mt-2 mb-6">BC Athletics</h2>
-                    <p class="text-gray-700 mb-6">Coach sportif certifié diplômé de l'Université Paris Nanterre, spécialisé en musculation, nutrition et conditionnement physique. Actuellement partenaire avec Fitness Park pour offrir des expériences d'entraînement premium à des clients individuels et en groupe.</p>
-                    <p class="text-gray-700 mb-8">Ma méthodologie combine des principes d'entraînement fondés sur des preuves scientifiques avec une attention personnalisée pour garantir des résultats optimaux pour chaque client, quel que soit son niveau de départ.</p>
+                    <p class="text-gray-700 mb-6">Je m’appelle Benjamin. Je suis préparateur physique, coach sportif & nutritionniste. Jour après jour, j’allie connaissances scientifiques, instructions et enthousiasme pour accompagner mes clients dans leur quête du progrès et pour optimiser les performances de chacun, du sportif amateur au compétiteur confirmé. J’ai fait de ma passion l’accompagnement des autres vers des objectifs physiques, de performance et de
+santé sur le court, moyen et long terme. Ma mission est de vous faire progresser de manière intelligente, durable et individualisée, en m’appuyant
+sur vos caractéristiques morphologiques, vos objectifs et les meilleures données scientifiques
+disponibles.</p>
+                    <p class="text-gray-700 mb-8">Je serais ravi de te faire atteindre tes objectifs. N’hésite pas à me contactez si toutefois tu serais interressé !</p>
                     <div class="grid grid-cols-2 gap-4 mb-8">
                         <div class="stats-card bg-white p-4 rounded-lg shadow-md text-center">
-                            <p class="text-blue-600 font-bold text-3xl">500+</p>
+                            <p class="text-blue-600 font-bold text-3xl">200+</p>
                             <p class="text-gray-600">Clients Satisfaits</p>
                         </div>
                         <div class="stats-card bg-white p-4 rounded-lg shadow-md text-center">
@@ -212,6 +171,89 @@
             </div>
         </div>
     </section>
+    
+    <section class="hero text-white min-h-screen flex items-center relative">
+        <!-- Less dark overlay -->
+        <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                Coaching en ligne <span class="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">Prise de muscle & Perte de gras</span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto">
+                Tu souhaites être accompagné(e) vers tes objectifs ? Que ce soit pour la prise de
+                muscles, la perte de poids ou pour t’aider à te surpasser, je suis disponible pour
+                t’accompagner !
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#contact" class="btn-primary text-white font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl">
+                    Réserver une Séance <i class="fas fa-calendar-check ml-2"></i>
+                </a>
+                <a href="#services" class="bg-white text-blue-600 font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl transition duration-300">
+                    Explorer les Services <i class="fas fa-chevron-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-blue-600 font-bold uppercase tracking-wider">Services</span>
+                <h2 class="text-4xl font-bold mt-2">Programmes d'Entraînement Transformateurs</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-4">Solutions personnalisées conçues pour vous aider à atteindre vos objectifs physiques de manière efficace et durable.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="service-card bg-gray-50 p-8 rounded-xl border border-gray-200">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-dumbbell text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Prise de muscle / perte de gras</h3>
+                    <p class="text-gray-600 mb-6">Programmes de force personnalisés pour développer la masse musculaire, augmenter la puissance et améliorer la silhouette globale.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> Plans d'entraînement personnalisés</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> Techniques de surcharge progressive</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> Correction et optimisation de la forme</li>
+                    </ul>
+                    <a href="#contact" class="text-blue-600 font-medium inline-flex items-center">
+                        En savoir plus <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                <div class="service-card bg-gray-50 p-8 rounded-xl border border-gray-200">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-utensils text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Coaching nutrition en ligne</h3>
+                    <p class="text-gray-600 mb-6">Stratégies nutritionnelles fondées sur la science pour optimiser les performances et atteindre vos objectifs de composition corporelle.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> Optimisation des macronutriments</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> Conseils de planification des repas</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> Recommandations de suppléments</li>
+                    </ul>
+                    <a href="#contact" class="text-blue-600 font-medium inline-flex items-center">
+                        En savoir plus <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                <div class="service-card bg-gray-50 p-8 rounded-xl border border-gray-200">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-heartbeat text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Plan d’entraînement sur-mesure</h3>
+                    <p class="text-gray-600 mb-6">Que tu prépares ton premier 10 km ou que tu veuilles exploser ton chrono au marathon, je
+t’accompagne avec un coaching structuré, intelligent et adapté à ta vie, ton niveau et ton objectif.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> Conditionnement métabolique</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> Entraînement spécifique au sport</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> Protocoles de récupération</li>
+                    </ul>
+                    <a href="#contact" class="text-blue-600 font-medium inline-flex items-center">
+                        En savoir plus <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Testimonials Section -->
     <section id="testimonials" class="py-20 bg-blue-600 text-white">
@@ -219,7 +261,7 @@
             <div class="text-center mb-16">
                 <span class="text-blue-300 font-bold uppercase tracking-wider">Témoignages</span>
                 <h2 class="text-4xl font-bold mt-2">Histoires de Réussite de Clients</h2>
-                <p class="text-blue-200 max-w-2xl mx-auto mt-4">Écoutez ceux qui ont transformé leur vie grâce à nos programmes d'entraînement.</p>
+                <p class="text-blue-200 max-w-2xl mx-auto mt-4">Écoutez ceux qui ont transformé leur vie grâce à mes programmes d'entraînement.</p>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <div class="testimonial-card p-8 rounded-xl">
@@ -237,7 +279,7 @@
                             </div>
                         </div>
                     </div>
-                    <p class="italic text-blue-100">"Le programme de musculation de BC a complètement transformé ma silhouette. En seulement 6 mois, j'ai pris 8 kg de muscle tout en réduisant mon pourcentage de graisse corporelle. Son attention à la forme et sa programmation progressive sont inégalées."</p>
+                    <p class="italic text-blue-100">"Le programme de musculation de Benjamin a complètement transformé ma silhouette. En seulement 6 mois, j'ai pris 8 kg de muscle tout en réduisant mon pourcentage de graisse corporelle. Son attention à la forme et sa programmation progressive sont inégalées."</p>
                 </div>
                 <div class="testimonial-card p-8 rounded-xl">
                     <div class="flex items-center mb-6">
@@ -254,22 +296,64 @@
                             </div>
                         </div>
                     </div>
-                    <p class="italic text-blue-100">"Le plan nutritionnel fourni par BC était révolutionnaire. J'ai perdu 12 kg tout en maintenant ma masse musculaire et en ayant plus d'énergie que jamais. Sa connaissance de la nutrition sportive est exceptionnelle."</p>
+                    <p class="italic text-blue-100">"Le plan nutritionnel fourni par Benjamin était révolutionnaire. J'ai perdu 12 kg tout en maintenant ma masse musculaire et en ayant plus d'énergie que jamais. Sa connaissance de la nutrition sportive est exceptionnelle."</p>
                 </div>
             </div>
         </div>
     </section>
+    <section id="certifications" class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+  <div class="container mx-auto px-6">
+    <div class="flex flex-col lg:flex-row items-center lg:flex-row-reverse">
+
+      <!-- Image -->
+      <div class="lg:w-1/2 mb-12 lg:mb-0 lg:pl-12">
+        <div class="relative">
+          <img src="/bc-athletics/assets/Coach focused.jpg" 
+               alt="Coach Certifications" 
+               class="rounded-xl shadow-2xl w-full max-w-lg">
+          <div class="absolute -bottom-6 -left-1 bg-white p-6 rounded-xl shadow-lg">
+            <div class="text-center">
+              <p class="text-4xl font-bold text-blue-600">5+</p>
+              <p class="text-gray-600">Certifications Officielles</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text Content -->
+      <div class="lg:w-1/2">
+        <span class="text-blue-600 font-bold uppercase tracking-wider">Qualifications</span>
+        <h2 class="text-4xl font-bold mt-2 mb-6">Pourquoi choisir BC Athletics ?</h2>
+        <p class="text-gray-700 mb-6">
+          En tant que coach certifié, je mets un point d'honneur à continuellement me former et à offrir un accompagnement de qualité, basé sur des méthodes éprouvées et reconnues.
+        </p>
+        <ul class="list-disc list-inside text-gray-700 mb-8 space-y-2">
+          <li>🎓 Licence STAPS - Entraînement Sportif</li> 
+          <li>🎓 Diplôme Universitaire “Micronutrition, Sport & Santé” – Université de Poitiers</li>
+          <li>🎓 DU “Préparation Physique des Sports Collectifs” – Université de Lille</li>
+          <li>🏆 Partenaire officiel Fitness Park</li>
+          <li>💪 Athlète pratiquant, je teste tout ce que je transmets : Marathon de Paris en 3h27, Tractions lestées (+50kg), Dips (+80kg), Développé couché (140 kg), Squat (180kg) SDT (2</li>
+        </ul>
+        <a href="#contact" class="btn-primary text-white font-bold py-3 px-6 rounded-full inline-flex items-center">
+          Me Contacter <i class="fas fa-envelope ml-2"></i>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
     <!-- Contact Section -->
     <section id="contact" class="py-20 bg-white">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
                 <span class="text-blue-600 font-bold uppercase tracking-wider">Contact</span>
-                <h2 class="text-4xl font-bold mt-2">Prêt à vous Transformer ?</h2>
+                <h2 class="text-4xl font-bold mt-2">Prêt(e) à vous Transformer ?</h2>
                 <p class="text-gray-600 max-w-2xl mx-auto mt-4">Contactez-moi pour planifier votre première séance ou poser des questions sur mes programmes d'entraînement.</p>
             </div>
-            <div class="flex flex-col lg:flex-row gap-12">
-                <div class="lg:w-1/2">
+            <div class="flex flex-col items-center">
+                <div class="w-full max-w-xl">
                     <div class="bg-gray-50 p-8 rounded-xl shadow-lg h-full">
                         <h3 class="text-2xl font-bold mb-6">Informations de Contact</h3>
                         <div class="space-y-6">
@@ -279,7 +363,7 @@
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-gray-800">Lieu</h4>
-                                    <p class="text-gray-600">Fitness Park Paris Centre<br>123 Rue de la Forme, 75001 Paris</p>
+                                    <p class="text-gray-600">Fitness Park Fleury-Mérogis<br>51 Av. de l'Hurepoix, 91700 Fleury-Mérogis</p>
                                 </div>
                             </div>
                             <div class="flex items-start">
@@ -288,7 +372,7 @@
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-gray-800">Téléphone</h4>
-                                    <p class="text-gray-600">+33 1 23 45 67 89</p>
+                                    <p class="text-gray-600">+33 7 51 60 04 76</p>
                                 </div>
                             </div>
                             <div class="flex items-start">
@@ -321,14 +405,11 @@
                         <div class="mt-10">
                             <h4 class="font-bold text-xl mb-4">Suivez-moi</h4>
                             <div class="flex space-x-4">
-                                <a href="#" class="bg-blue-100 text-blue-600 p-3 rounded-full hover:bg-blue-200 transition duration-300">
+                                <a href="https://www.instagram.com/bc__athletics/" class="bg-blue-100 text-blue-600 p-3 rounded-full hover:bg-blue-200 transition duration-300">
                                     <i class="fab fa-instagram text-xl"></i>
                                 </a>
-                                <a href="#" class="bg-blue-100 text-blue-600 p-3 rounded-full hover:bg-blue-200 transition duration-300">
+                                <a href="https://www.facebook.com/share/16SsBMCFhd/?mibextid=wwXIfr" class="bg-blue-100 text-blue-600 p-3 rounded-full hover:bg-blue-200 transition duration-300">
                                     <i class="fab fa-facebook-f text-xl"></i>
-                                </a>
-                                <a href="#" class="bg-blue-100 text-blue-600 p-3 rounded-full hover:bg-blue-200 transition duration-300">
-                                    <i class="fab fa-linkedin-in text-xl"></i>
                                 </a>
                             </div>
                         </div>
@@ -350,14 +431,11 @@
                     </div>
                     <p class="text-gray-400 mb-6">Coach sportif certifié spécialisé en musculation, nutrition et conditionnement physique à Paris.</p>
                     <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-blue-400 transition duration-300">
+                        <a href="https://www.instagram.com/bc__athletics/" class="text-gray-400 hover:text-blue-400 transition duration-300">
                             <i class="fab fa-instagram text-xl"></i>
                         </a>
                         <a href="#" class="text-gray-400 hover:text-blue-400 transition duration-300">
                             <i class="fab fa-facebook-f text-xl"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-blue-400 transition duration-300">
-                            <i class="fab fa-linkedin-in text-xl"></i>
                         </a>
                     </div>
                 </div>
@@ -386,11 +464,11 @@
                     <ul class="space-y-3 text-gray-400">
                         <li class="flex items-start">
                             <i class="fas fa-map-marker-alt mt-1 mr-3 text-blue-400"></i>
-                            <span>Fitness Park Paris Centre<br>123 Rue de la Forme<br>75001 Paris</span>
+                            <span>Fitness Park Fleury-Mérogis<br>51 Av. de l'Hurepoix<br>91700 Fleury-Mérogis</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-phone-alt mr-3 text-blue-400"></i>
-                            <span>+33 1 23 45 67 89</span>
+                            <span>+33 7 51 60 04 76</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-envelope mr-3 text-blue-400"></i>
