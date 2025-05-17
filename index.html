@@ -7,9 +7,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>        :root {
-            --primary: #4b83dc;
-            --primary-dark: #3b72c9;
+    <style>        
+        :root {
+            --primary: #4bb3dc;
+            --primary-dark: #2c8bb1;
             --accent-purple: #9d5cf0;
             --accent-green: #38a169;
             --subdued-bg: #f8fafc;
@@ -21,12 +22,10 @@
             scroll-behavior: smooth;
         }
 
-        /* Fade-in animation */
-
+        /* Fade-in animation */        
         .fade-hero-section {
             opacity: 0;
             transition: opacity 4s cubic-bezier(0.25, 0.8, 0.25, 1);
-            background-color: #000000;
         }
         .fade-hero-section.visible {
             opacity: 1;
@@ -39,22 +38,34 @@
         }
         .fade-section.visible {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0);        }        
+            
+        .hero {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), 
+                        url('assets/img/hero-background.jpg');
+            background-size: cover;
+            background-position: top center;
+            background-attachment: fixed;
+            overflow: hidden;
         }
 
-        .hero {
+        .second-hero {
             background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), 
                         url('https://images.unsplash.com/photo-1620188467120-5042ed1eb5da?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
+            overflow: hidden;
         }
+
         .service-card {
             transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }        .service-card:hover {
+        }        
+        .service-card:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
-        }        .testimonial-card {
+        }        
+        .testimonial-card {
             background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.12);
@@ -67,13 +78,16 @@
         }
         .stats-card {
             transition: all 0.3s ease;
-        }        .stats-card:hover {
+        }        
+        .stats-card:hover {
             transform: scale(1.02);
-        }.btn-primary {
+        }
+        .btn-primary {
             background: var(--primary);
             transition: all 0.3s ease;
             box-shadow: 0 3px 8px rgba(59, 130, 246, 0.15);
-        }        .btn-primary:hover {
+        }
+        .btn-primary:hover {
             background: var(--primary-dark);
             transform: translateY(-1px);
             box-shadow: 0 4px 10px rgba(59, 130, 246, 0.2);
@@ -122,11 +136,13 @@
             opacity: 0.7;
             transition: all 0.3s ease;
         }
-          .logo-container:hover .partner-logo {
+
+        .logo-container:hover .partner-logo {
             filter: grayscale(0%);
             opacity: 1;
         }
-          /* FC Fleury text styling */
+
+        /* FC Fleury text styling */
         .fc-fleury-text {
             color: #6b7280; /* text-gray-500 */
             transition: color 0.3s ease;
@@ -135,11 +151,23 @@
         .logo-container:hover .fc-fleury-text {
             color: #991b1b; /* text-red-800 */
         }
-        
+
         /* Strava logo sizing */
         .strava-logo {
             max-height: 45px; /* Slightly smaller than the standard 60px */
             transform: scale(0.75);
+        }
+        
+        /* Coach profile image fade effect */
+        .coach-img-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+        
+        .coach-profile-img {
+            mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 0));
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 0));
         }
     </style>
 </head>
@@ -150,14 +178,14 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex justify-between items-center h-20">
                 <div class="flex items-center space-x-4">
-                    <i class="fas fa-dumbbell text-blue-600 text-3xl"></i>
-                    <span class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">BC Athletics</span>
+                    <i class="fas fa-dumbbell text-cyan-700 text-3xl"></i>
+                    <span class="text-2xl font-bold bg-gradient-to-r from-cyan-700 to-cyan-500 bg-clip-text text-transparent">BC Athletics</span>
                 </div>
-                <div class="hidden lg:flex items-center space-x-8">                    <a href="#" class="nav-link text-gray-700 font-medium hover:text-blue-500">Accueil</a>
-                    <a href="#services" class="nav-link text-gray-700 font-medium hover:text-blue-500">Services</a>
-                    <a href="#about" class="nav-link text-gray-700 font-medium hover:text-blue-500">À propos</a>
-                    <a href="#testimonials" class="nav-link text-gray-700 font-medium hover:text-blue-500">Témoignages</a>
-                    <a href="#contact" class="nav-link text-gray-700 font-medium hover:text-blue-500">Contact</a>
+                <div class="hidden lg:flex items-center space-x-8">                    <a href="#" class="nav-link text-gray-700 font-medium hover:text-cyan-500">Accueil</a>
+                    <a href="#services" class="nav-link text-gray-700 font-medium hover:text-cyan-500">Services</a>
+                    <a href="#about" class="nav-link text-gray-700 font-medium hover:text-cyan-500">À propos</a>
+                    <a href="#testimonials" class="nav-link text-gray-700 font-medium hover:text-cyan-500">Témoignages</a>
+                    <a href="#contact" class="nav-link text-gray-700 font-medium hover:text-cyan-500">Contact</a>
                 </div>
                 <div class="lg:hidden">
                     <button class="text-gray-700 focus:outline-none">
@@ -165,62 +193,71 @@
                     </button>
                 </div>
             </div>
-        </div>
-    </nav>
+        </div>    
+    </nav>   
 
-    <!-- Hero Section -->
-    <section class="bg-black text-white min-h-screen flex items-center fade-hero-section">
-        <div class="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+    <!-- Hero Section -->    
+    <section class="hero text-white min-h-screen flex items-center fade-hero-section relative">
+        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+        <div class="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 gap-10 items-center relative z-10">
 
             <!-- Text Section -->
-            <div class="text-left">            <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-                Élevez Votre <span class="bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent">Performance</span>
-            </h1>
-            <p class="text-xl md:text-2xl mb-10 max-w-xl">
-                Coach certifié basé en région parisienne, spécialisé en musculation, nutrition et conditionnement physique. Partenaire de <span class="text-gray-400">Fitness</span> <span class="text-yellow-500">Park</span> pour des expériences d'entraînement premium.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4">
-                <a href="#contact" class="btn-primary text-white py-4 px-8 rounded-full shadow-lg hover:shadow-xl">
-                Réserver un Bilan Gratuit <i class="fas fa-calendar-check ml-2"></i>
-                </a>                <a href="#services" class="bg-white text-blue-500 py-4 px-8 rounded-full shadow-md hover:bg-gray-50 hover:text-blue-600 hover:shadow-lg transition-all duration-300">
-                    Explorer mes Services <i class="fas fa-chevron-right ml-2"></i>
-                </a>
-            </div>
-            </div>
+            <div class="text-left">            
+                <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                    Transformez <span class="bg-gradient-to-r from-cyan-500 to-cyan-700 bg-clip-text text-transparent">Vous</span>
+                </h1>
+                <p class="text-xl md:text-2xl mb-10 max-w-xl">
+                    Coach certifié basé en région parisienne, spécialisé en musculation, nutrition et conditionnement physique. Partenaire de <span class="text-gray-400">Fitness</span> <span class="text-yellow-500">Park</span> pour des expériences d'entraînement premium.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#contact" class="btn-primary text-white py-4 px-8 rounded-full shadow-lg hover:shadow-xl">
+                    Réserver un Bilan Gratuit <i class="fas fa-calendar-check ml-2"></i>
+                    </a>                
+                    <a href="#services" class="bg-white text-cyan-500 py-4 px-8 rounded-full shadow-md hover:bg-gray-50 hover:text-cyan-600 hover:shadow-lg transition-all duration-300">
+                        Explorer mes Services <i class="fas fa-chevron-right ml-2"></i>
+                    </a>
+                </div>
+            </div>   
 
             <!-- Image Section -->
-            <div>
-            <img src="assets/img/profile.png" alt="Coach Fitness Hero Image" class="w-full h-auto rounded-2xl shadow-lg" />
+            <div class="coach-img-container">
+                <img src="assets/img/coach_profile.png" alt="Coach Fitness Hero Image" class="w-full h-auto rounded-2xl shadow-lg coach-profile-img" />
             </div>
 
         </div>
-    </section>    <!-- About Section -->
+    </section>    
+    
+    
+    <!-- About Section -->
     <section id="about" class="py-20 bg-gradient-to-br from-gray-50 to-gray-100 fade-section">
         <div class="container mx-auto px-6">
             <div class="flex flex-col lg:flex-row items-center">
                 <div class="lg:w-1/2 mb-12 lg:mb-0 lg:pr-12">
-                    <div class="relative">                        <img src="assets/img/coach_doing_lunges.jpg" 
+                    <div class="relative">                        
+                        <img src="assets/img/coach_doing_lunges.jpg" 
                              alt="BC Athletics" 
-                             class="rounded-xl shadow-xl w-full max-w-lg"><div class="absolute -bottom-6 -right-1 bg-white p-6 rounded-xl shadow-md">
+                             class="rounded-xl shadow-xl w-full max-w-lg">
+                        <div class="absolute -bottom-6 -right-1 bg-white p-6 rounded-xl shadow-md">
                             <div class="text-center">
-                                <p class="text-4xl font-bold text-blue-500">10+</p>
+                                <p class="text-4xl font-bold text-cyan-500">10+</p>
                                 <p class="text-gray-600">Années d'Expérience</p>
                             </div>
                         </div>
                     </div>
-                </div>                <div class="lg:w-1/2">
-                    <span class="text-blue-500 font-bold uppercase tracking-wider">À Propos de Moi</span>
+                </div>                
+                <div class="lg:w-1/2">
+                    <span class="text-cyan-500 font-bold uppercase tracking-wider">À Propos de Moi</span>
                     <h2 class="text-4xl font-bold mt-2 mb-6">BC Athletics</h2>
                     <p class="text-gray-700 mb-6">Je m'appelle Benjamin. Préparateur physique, coach sportif & nutritionniste certifié. J'allie science, expertise et passion pour optimiser les performances de chaque sportif, du débutant au compétiteur. Ma mission : vous faire progresser intelligemment avec un accompagnement sur mesure basé sur votre morphologie, vos objectifs et les données scientifiques les plus récentes.</p>
                     <p class="text-gray-700 mb-8">Prêt à atteindre vos objectifs ? Contactez-moi pour transformer votre potentiel en résultats concrets !</p>
                     <div class="grid grid-cols-2 gap-4 mb-8">                        <div class="stats-card bg-white p-4 rounded-lg shadow-md text-center">
-                            <p class="text-blue-500 font-bold text-3xl">
+                            <p class="text-cyan-500 font-bold text-3xl">
                                 <span id="clients-count">0</span>+
                             </p>
                             <p class="text-gray-600">Transformations</p>
                         </div>
                         <div class="stats-card bg-white p-4 rounded-lg shadow-md text-center">
-                            <p class="text-blue-500 font-bold text-3xl">
+                            <p class="text-cyan-500 font-bold text-3xl">
                                 <span id="fidelity-count">0</span>%
                             </p>
                             <p class="text-gray-600">Satisfaction Client</p>
@@ -267,9 +304,9 @@
             </div>
 
             <!-- Partners Logos Section -->
-            <div class="mt-16">
+            <div class="mt-24"></div>
                 <div class="text-center mb-8">
-                    <span class="text-blue-600 font-bold uppercase tracking-wider">Partenaires & Réseaux</span>
+                    <span class="text-cyan-600 font-bold uppercase tracking-wider">Partenaires & Réseaux</span>
                 </div>
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 justify-items-center">
                     <div class="logo-container">
@@ -277,7 +314,8 @@
                     </div>
                     <div class="logo-container">
                         <img src="assets/img/logos/hyrox-logo.png" alt="Hyrox" class="partner-logo">
-                    </div>                    <div class="logo-container">
+                    </div>
+                    <div class="logo-container">
                         <img src="assets/img/logos/strava-logo.png" alt="Strava" class="partner-logo strava-logo">
                     </div>
                     <div class="logo-container">
@@ -285,7 +323,8 @@
                     </div>
                     <div class="logo-container">
                         <img src="assets/img/logos/fitbit-logo.png" alt="Fitbit" class="partner-logo strava-logo">
-                    </div>                    <div class="logo-container flex items-center">        
+                    </div>
+                    <div class="logo-container flex items-center">        
                         <img src="assets/img/logos/fc-fleury-logo.png" alt="FC Fleury" class="partner-logo">
                         <span class="ml-2 font-medium fc-fleury-text">FC fleury 91</span>
                     </div>
@@ -295,12 +334,13 @@
     </section>
 
 
-      <!-- Second Hero Section -->    <section class="hero text-white flex items-center relative py-64">
+    <!-- Second Hero Section -->    
+    <section class="second-hero text-white flex items-center relative py-64">
         <!-- Less dark overlay -->
         <div class="absolute inset-0 bg-black bg-opacity-40"></div>
         <div class="container mx-auto px-6 text-center relative z-10">
             <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-                Coaching en ligne <span class="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">Prise de muscle & Perte de gras</span>
+                Coaching en ligne <span class="bg-gradient-to-r from-cyan-400 to-cyan-600 bg-clip-text text-transparent">Prise de muscle & Perte de gras</span>
             </h1>
             <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto">
                 Tu souhaites être accompagné(e) vers tes objectifs ? Que ce soit pour la prise de
@@ -311,7 +351,7 @@
                 <a href="#contact" class="btn-primary text-white font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl">
                     Réserver une Séance <i class="fas fa-calendar-check ml-2"></i>
                 </a>
-                <a href="#services" class="bg-white text-blue-600 font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl transition duration-300">
+                <a href="#services" class="bg-white text-cyan-600 font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl transition duration-300">
                     Explorer les Services <i class="fas fa-chevron-right ml-2"></i>
                 </a>
             </div>
@@ -322,64 +362,64 @@
     <!-- Services Section -->
     <section id="services" class="py-20 bg-white fade-section">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-16">                <span class="text-blue-500 font-bold uppercase tracking-wider">Services</span>
+            <div class="text-center mb-16">                <span class="text-cyan-500 font-bold uppercase tracking-wider">Services</span>
                 <h2 class="text-4xl font-bold mt-2">Programmes d'Entraînement Transformateurs</h2>
                 <p class="text-gray-600 max-w-2xl mx-auto mt-4">Solutions personnalisées conçues pour vous aider à atteindre vos objectifs physiques de manière efficace et durable.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">                <div class="service-card bg-gray-50 p-8 rounded-xl border border-gray-200">
-                    <div class="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-dumbbell text-blue-500 text-2xl"></i>
+                    <div class="w-16 h-16 bg-cyan-50 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-dumbbell text-cyan-500 text-2xl"></i>
                     </div>
                     <h3 class="text-2xl font-bold mb-4">Prise de muscle / perte de gras</h3>
                     <p class="text-gray-600 mb-6">Tu veux te sculpter un corps athlétique, gagner du muscle sec, perdre du gras sans faire n’importe
 quoi, et surtout… tenir sur le long terme ? Tu es au bon endroit.</p>
-                    <ul class="space-y-2 mb-6">                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-400 mr-2"></i> Plans d'entraînement 100% personnalisés</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-400 mr-2"></i> Un suivi hebdomadaire</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-400 mr-2"></i> Ajustements en temps réel</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-400 mr-2"></i> Une approche éducative et humaine</li>
+                    <ul class="space-y-2 mb-6">                        <li class="flex items-center"><i class="fas fa-check-circle text-cyan-400 mr-2"></i> Plans d'entraînement 100% personnalisés</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-cyan-400 mr-2"></i> Un suivi hebdomadaire</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-cyan-400 mr-2"></i> Ajustements en temps réel</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-cyan-400 mr-2"></i> Une approche éducative et humaine</li>
                     </ul>
-                    <a href="#contact" class="text-blue-600 font-medium inline-flex items-center">
+                    <a href="#contact" class="text-cyan-600 font-medium inline-flex items-center">
                         En savoir plus <i class="fas fa-arrow-right ml-2"></i>
                     </a>
                 </div>
                 <div class="service-card bg-gray-50 p-8 rounded-xl border border-gray-200">
-                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-utensils text-blue-600 text-2xl"></i>
+                    <div class="w-16 h-16 bg-cyan-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-utensils text-cyan-600 text-2xl"></i>
                     </div>
                     <h3 class="text-2xl font-bold mb-4">Coaching nutrition en ligne</h3>
                     <p class="text-gray-600 mb-6">Tu veux perdre du gras, gagner du muscle ou simplement mieux manger sans te priver ni te prendre
 la tête ? Ce suivi nutrition est fait pour toi.</p>
                     <ul class="space-y-2 mb-6">
-                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> Un plan alimentaire 100 % personnalisé</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> Un suivi régulier</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> Ajustements chaque semaine</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> Recommandations de suppléments</li>                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> Optimisation des macronutriments</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-cyan-500 mr-2"></i> Un plan alimentaire 100 % personnalisé</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-cyan-500 mr-2"></i> Un suivi régulier</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-cyan-500 mr-2"></i> Ajustements chaque semaine</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-cyan-500 mr-2"></i> Recommandations de suppléments</li>                        <li class="flex items-center"><i class="fas fa-check-circle text-cyan-500 mr-2"></i> Optimisation des macronutriments</li>
                     </ul>
-                    <a href="#contact" class="text-blue-500 font-medium inline-flex items-center">
+                    <a href="#contact" class="text-cyan-500 font-medium inline-flex items-center">
                         En savoir plus <i class="fas fa-arrow-right ml-2"></i>
                     </a>
                 </div>                <div class="service-card bg-gray-50 p-8 rounded-xl border border-gray-200">
-                    <div class="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-heartbeat text-blue-500 text-2xl"></i>
+                    <div class="w-16 h-16 bg-cyan-50 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-heartbeat text-cyan-500 text-2xl"></i>
                     </div>
                     <h3 class="text-2xl font-bold mb-4">Coaching course à pied</h3>
                     <p class="text-gray-600 mb-6">Que tu prépares ton premier 10 km ou que tu veuilles exploser ton chrono au marathon, je
 t’accompagne avec un coaching structuré, intelligent et adapté à ta vie, ton niveau et ton objectif.</p>
                     <ul class="space-y-2 mb-6">
-                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> Plan d’entraînement sur-mesure</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> Progression intelligente</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> Préparation complète avec suivi régulier</li>                    </ul>
-                    <a href="#contact" class="text-blue-500 font-medium inline-flex items-center">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-cyan-500 mr-2"></i> Plan d’entraînement sur-mesure</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-cyan-500 mr-2"></i> Progression intelligente</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-cyan-500 mr-2"></i> Préparation complète avec suivi régulier</li>                    </ul>
+                    <a href="#contact" class="text-cyan-500 font-medium inline-flex items-center">
                         En savoir plus <i class="fas fa-arrow-right ml-2"></i>
                     </a>
                 </div>
             </div>
         </div>    </section><!-- Testimonials Section -->
-    <section id="testimonials" class="py-20 bg-blue-700 text-white overflow-hidden w-full fade-section">
+    <section id="testimonials" class="py-20 bg-cyan-700 text-white overflow-hidden w-full fade-section">
         <!-- Header Container -->
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <span class="text-blue-200 font-bold uppercase tracking-wider">Témoignages</span>
+                <span class="text-cyan-200 font-bold uppercase tracking-wider">Témoignages</span>
                 <h2 class="text-4xl font-bold mt-2">Histoires de Réussite de Clients</h2>
                 <p class="text-gray-100 max-w-2xl mx-auto mt-4">Écoutez ceux qui ont transformé leur vie grâce à mes programmes d'entraînement.</p>
             </div>
@@ -390,10 +430,10 @@ t’accompagne avec un coaching structuré, intelligent et adapté à ta vie, to
                         <!-- Testimonial 1 -->
                         <div class="testimonial-card p-8 rounded-xl min-w-[350px] max-w-md">
                             <div class="flex items-center mb-6">
-                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client" class="rounded-full h-14 w-14 mr-4 border-2 border-blue-400">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client" class="rounded-full h-14 w-14 mr-4 border-2 border-cyan-400">
                                 <div>
                                     <p class="font-bold text-lg">Jean Dupont</p>
-                                    <p class="text-blue-300">Membre Fitness Park</p>
+                                    <p class="text-cyan-300">Membre Fitness Park</p>
                                     <div class="flex mt-1">
                                         <i class="fas fa-star text-yellow-300"></i>
                                         <i class="fas fa-star text-yellow-300"></i>
@@ -403,15 +443,15 @@ t’accompagne avec un coaching structuré, intelligent et adapté à ta vie, to
                                     </div>
                                 </div>
                             </div>
-                            <p class="italic text-blue-100">"Le programme de musculation de Benjamin a complètement transformé ma silhouette. En seulement 6 mois, j'ai pris 8 kg de muscle tout en réduisant mon pourcentage de graisse corporelle. Son attention à la forme et sa programmation progressive sont inégalées."</p>
+                            <p class="italic text-cyan-100">"Le programme de musculation de Benjamin a complètement transformé ma silhouette. En seulement 6 mois, j'ai pris 8 kg de muscle tout en réduisant mon pourcentage de graisse corporelle. Son attention à la forme et sa programmation progressive sont inégalées."</p>
                         </div>
                         <!-- Testimonial 2 -->
                         <div class="testimonial-card p-8 rounded-xl min-w-[350px] max-w-md">
                             <div class="flex items-center mb-6">
-                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client" class="rounded-full h-14 w-14 mr-4 border-2 border-blue-400">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client" class="rounded-full h-14 w-14 mr-4 border-2 border-cyan-400">
                                 <div>
                                     <p class="font-bold text-lg">Marie Leclerc</p>
-                                    <p class="text-blue-300">Participante aux Séances de Groupe</p>
+                                    <p class="text-cyan-300">Participante aux Séances de Groupe</p>
                                     <div class="flex mt-1">
                                         <i class="fas fa-star text-yellow-300"></i>
                                         <i class="fas fa-star text-yellow-300"></i>
@@ -421,15 +461,15 @@ t’accompagne avec un coaching structuré, intelligent et adapté à ta vie, to
                                     </div>
                                 </div>
                             </div>
-                            <p class="italic text-blue-100">"Le plan nutritionnel fourni par Benjamin était révolutionnaire. J'ai perdu 12 kg tout en maintenant ma masse musculaire et en ayant plus d'énergie que jamais. Sa connaissance de la nutrition sportive est exceptionnelle."</p>
+                            <p class="italic text-cyan-100">"Le plan nutritionnel fourni par Benjamin était révolutionnaire. J'ai perdu 12 kg tout en maintenant ma masse musculaire et en ayant plus d'énergie que jamais. Sa connaissance de la nutrition sportive est exceptionnelle."</p>
                         </div>
                         <!-- Testimonial 3 -->
                         <div class="testimonial-card p-8 rounded-xl min-w-[350px] max-w-md">
                             <div class="flex items-center mb-6">
-                                <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Client" class="rounded-full h-14 w-14 mr-4 border-2 border-blue-400">
+                                <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Client" class="rounded-full h-14 w-14 mr-4 border-2 border-cyan-400">
                                 <div>
                                     <p class="font-bold text-lg">Lucas Martin</p>
-                                    <p class="text-blue-300">Coureur Amateur</p>
+                                    <p class="text-cyan-300">Coureur Amateur</p>
                                     <div class="flex mt-1">
                                         <i class="fas fa-star text-yellow-300"></i>
                                         <i class="fas fa-star text-yellow-300"></i>
@@ -439,15 +479,15 @@ t’accompagne avec un coaching structuré, intelligent et adapté à ta vie, to
                                     </div>
                                 </div>
                             </div>
-                            <p class="italic text-blue-100">"Grâce au coaching course à pied, j'ai battu mon record personnel sur 10 km et j'ai appris à structurer mes entraînements intelligemment. Benjamin est à l'écoute et très motivant."</p>
+                            <p class="italic text-cyan-100">"Grâce au coaching course à pied, j'ai battu mon record personnel sur 10 km et j'ai appris à structurer mes entraînements intelligemment. Benjamin est à l'écoute et très motivant."</p>
                         </div>
                         <!-- Testimonial 4 -->
                         <div class="testimonial-card p-8 rounded-xl min-w-[350px] max-w-md">
                             <div class="flex items-center mb-6">
-                                <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Client" class="rounded-full h-14 w-14 mr-4 border-2 border-blue-400">
+                                <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Client" class="rounded-full h-14 w-14 mr-4 border-2 border-cyan-400">
                                 <div>
                                     <p class="font-bold text-lg">Sophie Bernard</p>
-                                    <p class="text-blue-300">Cliente Nutrition</p>
+                                    <p class="text-cyan-300">Cliente Nutrition</p>
                                     <div class="flex mt-1">
                                         <i class="fas fa-star text-yellow-300"></i>
                                         <i class="fas fa-star text-yellow-300"></i>
@@ -457,15 +497,15 @@ t’accompagne avec un coaching structuré, intelligent et adapté à ta vie, to
                                     </div>
                                 </div>
                             </div>
-                            <p class="italic text-blue-100">"J'ai enfin trouvé un accompagnement nutritionnel qui me correspond. Les conseils sont personnalisés et j'ai vu des résultats durables sans frustration."</p>
+                            <p class="italic text-cyan-100">"J'ai enfin trouvé un accompagnement nutritionnel qui me correspond. Les conseils sont personnalisés et j'ai vu des résultats durables sans frustration."</p>
                         </div>
                         <!-- Repeat testimonials for seamless loop -->
                         <div class="testimonial-card p-8 rounded-xl min-w-[350px] max-w-md">
                             <div class="flex items-center mb-6">
-                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client" class="rounded-full h-14 w-14 mr-4 border-2 border-blue-400">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client" class="rounded-full h-14 w-14 mr-4 border-2 border-cyan-400">
                                 <div>
                                     <p class="font-bold text-lg">Jean Dupont</p>
-                                    <p class="text-blue-300">Membre Fitness Park</p>
+                                    <p class="text-cyan-300">Membre Fitness Park</p>
                                     <div class="flex mt-1">
                                         <i class="fas fa-star text-yellow-300"></i>
                                         <i class="fas fa-star text-yellow-300"></i>
@@ -475,14 +515,14 @@ t’accompagne avec un coaching structuré, intelligent et adapté à ta vie, to
                                     </div>
                                 </div>
                             </div>
-                            <p class="italic text-blue-100">"Le programme de musculation de Benjamin a complètement transformé ma silhouette. En seulement 6 mois, j'ai pris 8 kg de muscle tout en réduisant mon pourcentage de graisse corporelle. Son attention à la forme et sa programmation progressive sont inégalées."</p>
+                            <p class="italic text-cyan-100">"Le programme de musculation de Benjamin a complètement transformé ma silhouette. En seulement 6 mois, j'ai pris 8 kg de muscle tout en réduisant mon pourcentage de graisse corporelle. Son attention à la forme et sa programmation progressive sont inégalées."</p>
                         </div>
                         <div class="testimonial-card p-8 rounded-xl min-w-[350px] max-w-md">
                             <div class="flex items-center mb-6">
-                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client" class="rounded-full h-14 w-14 mr-4 border-2 border-blue-400">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client" class="rounded-full h-14 w-14 mr-4 border-2 border-cyan-400">
                                 <div>
                                     <p class="font-bold text-lg">Marie Leclerc</p>
-                                    <p class="text-blue-300">Participante aux Séances de Groupe</p>
+                                    <p class="text-cyan-300">Participante aux Séances de Groupe</p>
                                     <div class="flex mt-1">
                                         <i class="fas fa-star text-yellow-300"></i>
                                         <i class="fas fa-star text-yellow-300"></i>
@@ -492,14 +532,14 @@ t’accompagne avec un coaching structuré, intelligent et adapté à ta vie, to
                                     </div>
                                 </div>
                             </div>
-                            <p class="italic text-blue-100">"Le plan nutritionnel fourni par Benjamin était révolutionnaire. J'ai perdu 12 kg tout en maintenant ma masse musculaire et en ayant plus d'énergie que jamais. Sa connaissance de la nutrition sportive est exceptionnelle."</p>
+                            <p class="italic text-cyan-100">"Le plan nutritionnel fourni par Benjamin était révolutionnaire. J'ai perdu 12 kg tout en maintenant ma masse musculaire et en ayant plus d'énergie que jamais. Sa connaissance de la nutrition sportive est exceptionnelle."</p>
                         </div>
                         <div class="testimonial-card p-8 rounded-xl min-w-[350px] max-w-md">
                             <div class="flex items-center mb-6">
-                                <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Client" class="rounded-full h-14 w-14 mr-4 border-2 border-blue-400">
+                                <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Client" class="rounded-full h-14 w-14 mr-4 border-2 border-cyan-400">
                                 <div>
                                     <p class="font-bold text-lg">Lucas Martin</p>
-                                    <p class="text-blue-300">Coureur Amateur</p>
+                                    <p class="text-cyan-300">Coureur Amateur</p>
                                     <div class="flex mt-1">
                                         <i class="fas fa-star text-yellow-300"></i>
                                         <i class="fas fa-star text-yellow-300"></i>
@@ -509,14 +549,14 @@ t’accompagne avec un coaching structuré, intelligent et adapté à ta vie, to
                                     </div>
                                 </div>
                             </div>
-                            <p class="italic text-blue-100">"Grâce au coaching course à pied, j'ai battu mon record personnel sur 10 km et j'ai appris à structurer mes entraînements intelligemment. Benjamin est à l'écoute et très motivant."</p>
+                            <p class="italic text-cyan-100">"Grâce au coaching course à pied, j'ai battu mon record personnel sur 10 km et j'ai appris à structurer mes entraînements intelligemment. Benjamin est à l'écoute et très motivant."</p>
                         </div>
                         <div class="testimonial-card p-8 rounded-xl min-w-[350px] max-w-md">
                             <div class="flex items-center mb-6">
-                                <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Client" class="rounded-full h-14 w-14 mr-4 border-2 border-blue-400">
+                                <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Client" class="rounded-full h-14 w-14 mr-4 border-2 border-cyan-400">
                                 <div>
                                     <p class="font-bold text-lg">Sophie Bernard</p>
-                                    <p class="text-blue-300">Cliente Nutrition</p>
+                                    <p class="text-cyan-300">Cliente Nutrition</p>
                                     <div class="flex mt-1">
                                         <i class="fas fa-star text-yellow-300"></i>
                                         <i class="fas fa-star text-yellow-300"></i>
@@ -526,7 +566,7 @@ t’accompagne avec un coaching structuré, intelligent et adapté à ta vie, to
                                     </div>
                                 </div>
                             </div>
-                            <p class="italic text-blue-100">"J'ai enfin trouvé un accompagnement nutritionnel qui me correspond. Les conseils sont personnalisés et j'ai vu des résultats durables sans frustration."</p>                        </div>
+                            <p class="italic text-cyan-100">"J'ai enfin trouvé un accompagnement nutritionnel qui me correspond. Les conseils sont personnalisés et j'ai vu des résultats durables sans frustration."</p>                        </div>
                 </div>
             </div>
         </div>        <style>
@@ -563,7 +603,7 @@ t’accompagne avec un coaching structuré, intelligent et adapté à ta vie, to
                class="rounded-xl shadow-2xl w-full max-w-lg">
           <div class="absolute -bottom-6 -left-2 bg-white p-6 rounded-xl shadow-lg">
             <div class="text-center">
-              <p class="text-4xl font-bold text-blue-600">5+</p>
+              <p class="text-4xl font-bold text-cyan-600">5+</p>
               <p class="text-gray-600">Certifications Officielles</p>
             </div>
           </div>
@@ -574,9 +614,9 @@ t’accompagne avec un coaching structuré, intelligent et adapté à ta vie, to
       <div class="lg:w-1/2">
         <!-- Section Header -->
         <div class="mb-8">
-          <span class="text-blue-600 font-bold uppercase tracking-wider">Qualifications</span>
+          <span class="text-cyan-600 font-bold uppercase tracking-wider">Qualifications</span>
           <h2 class="text-4xl font-bold mt-2">Pourquoi choisir BC Athletics ?</h2>
-          <div class="h-1 w-20 bg-blue-500 mt-4"></div>
+          <div class="h-1 w-20 bg-cyan-500 mt-4"></div>
         </div>
         
         <!-- Introduction -->
@@ -588,22 +628,22 @@ t’accompagne avec un coaching structuré, intelligent et adapté à ta vie, to
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
           <!-- Academic Qualifications -->
           <div class="bg-white p-5 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-            <div class="flex items-center mb-3">              <div class="bg-blue-50 p-2 rounded-full">
-                <i class="fas fa-graduation-cap text-blue-500"></i>
+            <div class="flex items-center mb-3">              <div class="bg-cyan-50 p-2 rounded-full">
+                <i class="fas fa-graduation-cap text-cyan-500"></i>
               </div>
               <h3 class="ml-3 font-bold">Formation Académique</h3>
             </div>
             <ul class="space-y-2 text-gray-700">
               <li class="flex items-start">
-                <span class="text-blue-500 mr-2">•</span>
+                <span class="text-cyan-500 mr-2">•</span>
                 <span>Licence STAPS - Entraînement Sportif</span>
               </li>
               <li class="flex items-start">
-                <span class="text-blue-500 mr-2">•</span>
+                <span class="text-cyan-500 mr-2">•</span>
                 <span>DU "Micronutrition, Sport & Santé" – Université de Poitiers</span>
               </li>
               <li class="flex items-start">
-                <span class="text-blue-500 mr-2">•</span>
+                <span class="text-cyan-500 mr-2">•</span>
                 <span>DU "Préparation Physique des Sports Collectifs" – Université de Lille</span>
               </li>
             </ul>
@@ -611,18 +651,18 @@ t’accompagne avec un coaching structuré, intelligent et adapté à ta vie, to
           
           <!-- Professional Experience -->
           <div class="bg-white p-5 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-            <div class="flex items-center mb-3">              <div class="bg-blue-50 p-2 rounded-full">
-                <i class="fas fa-medal text-blue-500"></i>
+            <div class="flex items-center mb-3">              <div class="bg-cyan-50 p-2 rounded-full">
+                <i class="fas fa-medal text-cyan-500"></i>
               </div>
               <h3 class="ml-3 font-bold">Expérience & Performance</h3>
             </div>
             <ul class="space-y-2 text-gray-700">
               <li class="flex items-start">
-                <span class="text-blue-500 mr-2">•</span>
+                <span class="text-cyan-500 mr-2">•</span>
                 <span>Partenaire officiel Fitness Park</span>
               </li>
               <li class="flex items-start">
-                <span class="text-blue-500 mr-2">•</span>
+                <span class="text-cyan-500 mr-2">•</span>
                 <span>Athlète pratiquant: Marathon (3h27), Tractions (+50kg), Développé couché (140kg)</span>
               </li>
             </ul>
@@ -645,7 +685,7 @@ t’accompagne avec un coaching structuré, intelligent et adapté à ta vie, to
     <!-- Contact Section -->
     <section id="contact" class="py-20 bg-white fade-section">
         <div class="container mx-auto px-4 sm:px-6">
-            <div class="text-center mb-16">                <span class="text-blue-500 font-bold uppercase tracking-wider">Contact</span>
+            <div class="text-center mb-16">                <span class="text-cyan-500 font-bold uppercase tracking-wider">Contact</span>
                 <h2 class="text-4xl font-bold mt-2">Prêt(e) à vous Transformer ?</h2>
                 <p class="text-gray-600 max-w-2xl mx-auto mt-4">Contactez-moi pour planifier votre première séance ou poser des questions sur mes programmes d'entraînement.</p>
             </div>
@@ -664,28 +704,28 @@ t’accompagne avec un coaching structuré, intelligent et adapté à ta vie, to
                     <div class="bg-gray-50 p-8 rounded-xl shadow-lg w-full">
                         <h3 class="text-2xl font-bold mb-6">Informations de Contact</h3>
                         <div class="space-y-6">
-                            <div class="flex items-start">                                <div class="bg-blue-50 p-3 rounded-full mr-4">
-                                    <i class="fas fa-map-marker-alt text-blue-500"></i>
+                            <div class="flex items-start">                                <div class="bg-cyan-50 p-3 rounded-full mr-4">
+                                    <i class="fas fa-map-marker-alt text-cyan-500"></i>
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-gray-800">Adresse</h4>
                                     <p class="text-gray-600">Fitness Park Fleury-Mérogis<br>51 Av. de l'Hurepoix, 91700 Fleury-Mérogis</p>
                                 </div>
                             </div>
-                            <div class="flex items-start">                                <div class="bg-blue-50 p-3 rounded-full mr-4">
-                                    <i class="fas fa-phone-alt text-blue-500"></i>
+                            <div class="flex items-start">                                <div class="bg-cyan-50 p-3 rounded-full mr-4">
+                                    <i class="fas fa-phone-alt text-cyan-500"></i>
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-gray-800">Téléphone</h4>
                                     <p class="text-gray-600">+33 7 51 60 04 76</p>
                                 </div>
                             </div>
-                            <div class="flex items-start">                                <div class="bg-blue-50 p-3 rounded-full mr-4">
-                                    <i class="fas fa-envelope text-blue-500"></i>
+                            <div class="flex items-start">                                <div class="bg-cyan-50 p-3 rounded-full mr-4">
+                                    <i class="fas fa-envelope text-cyan-500"></i>
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-gray-800">Email</h4>                                    <p class="text-gray-600">
-                                        <a href="mailto:benjamin.caronpro@hotmail.com" class="break-all hover:text-blue-500 transition">benjamin.caronpro@hotmail.com</a>
+                                        <a href="mailto:benjamin.caronpro@hotmail.com" class="break-all hover:text-cyan-500 transition">benjamin.caronpro@hotmail.com</a>
                                     </p>
                                 </div>
                             </div>
@@ -710,7 +750,7 @@ t’accompagne avec un coaching structuré, intelligent et adapté à ta vie, to
                                 <a href="https://www.instagram.com/bc__athletics/" class="bg-gray-100 text-purple-500 p-3 rounded-full hover:bg-gray-200 hover:text-purple-600 transition duration-300">
                                     <i class="fab fa-instagram text-xl"></i>
                                 </a>
-                                <a href="https://www.facebook.com/share/16SsBMCFhd/?mibextid=wwXIfr" class="bg-gray-100 text-blue-500 p-3 rounded-full hover:bg-gray-200 hover:text-blue-600 transition duration-300">
+                                <a href="https://www.facebook.com/share/16SsBMCFhd/?mibextid=wwXIfr" class="bg-gray-100 text-cyan-500 p-3 rounded-full hover:bg-gray-200 hover:text-cyan-600 transition duration-300">
                                     <i class="fab fa-facebook-f text-xl"></i>
                                 </a>
                                 <a href="https://wa.me/33751600476" class="bg-gray-100 text-green-500 p-3 rounded-full hover:bg-gray-200 hover:text-green-600 transition duration-300" target="_blank" rel="noopener">
@@ -725,18 +765,19 @@ t’accompagne avec un coaching structuré, intelligent et adapté à ta vie, to
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white pt-16 pb-8 fade-section">
+    <footer class="bg-gray-800 text-white pt-16 pb-8 fade-section">
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
-                <div>                    <div class="flex items-center mb-6">
-                        <i class="fas fa-dumbbell text-blue-500 text-3xl mr-3"></i>
-                        <span class="text-2xl font-bold bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent">BC Athletics</span>
+                <div>                    
+                    <div class="flex items-center mb-6">
+                        <i class="fas fa-dumbbell text-cyan-500 text-3xl mr-3"></i>
+                        <span class="text-2xl font-bold bg-gradient-to-r from-cyan-500 to-cyan-700 bg-clip-text text-transparent">BC Athletics</span>
                     </div>
                     <p class="text-gray-400 mb-6">Coach sportif certifié spécialisé en musculation, nutrition et conditionnement physique à Paris.</p>                    <div class="flex space-x-4">
                         <a href="https://www.instagram.com/bc__athletics/" class="text-gray-400 hover:text-purple-500 transition duration-300">
                             <i class="fab fa-instagram text-xl"></i>
                         </a>
-                        <a href="https://www.facebook.com/share/16SsBMCFhd/?mibextid=wwXIfr" class="text-gray-400 hover:text-blue-400 transition duration-300">
+                        <a href="https://www.facebook.com/share/16SsBMCFhd/?mibextid=wwXIfr" class="text-gray-400 hover:text-cyan-400 transition duration-300">
                             <i class="fab fa-facebook-f text-xl"></i>
                         </a>
                         <a href="https://wa.me/33751600476" class="text-gray-400 hover:text-green-500 transition duration-300" target="_blank" rel="noopener">
@@ -746,37 +787,37 @@ t’accompagne avec un coaching structuré, intelligent et adapté à ta vie, to
                 </div>
                 <div>
                     <h3 class="text-lg font-bold mb-6">Services</h3>                    <ul class="space-y-3">
-                        <li><a href="#" class="text-gray-400 hover:text-blue-500 transition duration-300">Musculation</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-blue-500 transition duration-300">Planification Nutritionnelle</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-blue-500 transition duration-300">Conditionnement Physique</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-blue-500 transition duration-300">Entraînement de Groupe</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-blue-500 transition duration-300">Entraînement Personnel</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyan-500 transition duration-300">Musculation</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyan-500 transition duration-300">Planification Nutritionnelle</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyan-500 transition duration-300">Conditionnement Physique</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyan-500 transition duration-300">Entraînement de Groupe</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyan-500 transition duration-300">Entraînement Personnel</a></li>
                     </ul>
                 </div>
                 <div>
                     <h3 class="text-lg font-bold mb-6">Liens Rapides</h3>                    <ul class="space-y-3">
-                        <li><a href="#" class="text-gray-400 hover:text-blue-500 transition duration-300">Accueil</a></li>
-                        <li><a href="#services" class="text-gray-400 hover:text-blue-500 transition duration-300">Services</a></li>
-                        <li><a href="#about" class="text-gray-400 hover:text-blue-500 transition duration-300">À propos</a></li>
-                        <li><a href="#testimonials" class="text-gray-400 hover:text-blue-500 transition duration-300">Témoignages</a></li>
-                        <li><a href="#contact" class="text-gray-400 hover:text-blue-400 transition duration-300">Contact</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyan-500 transition duration-300">Accueil</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-cyan-500 transition duration-300">Services</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-cyan-500 transition duration-300">À propos</a></li>
+                        <li><a href="#testimonials" class="text-gray-400 hover:text-cyan-500 transition duration-300">Témoignages</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-cyan-400 transition duration-300">Contact</a></li>
                     </ul>
                 </div>
                 <div>
                     <h3 class="text-lg font-bold mb-6">Contact</h3>
                     <ul class="space-y-3 text-gray-400">
                         <li class="flex items-start">
-                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-blue-400"></i>
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-cyan-400"></i>
                             <span>Fitness Park Fleury-Mérogis<br>51 Av. de l'Hurepoix<br>91700 Fleury-Mérogis</span>
                         </li>
                         <li class="flex items-center">
-                            <i class="fas fa-phone-alt mr-3 text-blue-400"></i>
+                            <i class="fas fa-phone-alt mr-3 text-cyan-400"></i>
                             <span>+33 7 51 60 04 76</span>
                         </li>
                         <li class="flex items-center">
-                            <i class="fas fa-envelope mr-3 text-blue-400"></i>
+                            <i class="fas fa-envelope mr-3 text-cyan-400"></i>
                             <span>
-                                <a href="mailto:benjamin.caronpro@hotmail.com" class="hover:text-blue-400 transition">benjamin.caronpro@hotmail.com</a>
+                                <a href="mailto:benjamin.caronpro@hotmail.com" class="hover:text-cyan-400 transition">benjamin.caronpro@hotmail.com</a>
                             </span>
                         </li>
                     </ul>
@@ -791,7 +832,7 @@ t’accompagne avec un coaching structuré, intelligent et adapté à ta vie, to
             <div class="mt-6 text-center">
                 <p class="text-xs text-gray-500">
                     Site réalisé par 
-                    <a href="https://mdmygroup.com" target="_blank" rel="noopener" class="underline hover:text-blue-400 transition">
+                    <a href="https://mdmygroup.com" target="_blank" rel="noopener" class="underline hover:text-cyan-400 transition">
                         MDMY Group
                     </a>
                 </p>
