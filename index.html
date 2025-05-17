@@ -24,6 +24,37 @@
             scroll-behavior: smooth;
         }
 
+        /* Mobile menu styling */
+        #mobile-menu {
+            transform-origin: top;
+            transition: all 0.3s ease-in-out;
+            border-top: 1px solid #f0f0f0;
+        }
+        
+        #mobile-menu.hidden {
+            display: none;
+        }
+        
+        #mobile-menu a {
+            position: relative;
+        }
+        
+        #mobile-menu a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 4px;
+            background: var(--primary);
+            opacity: 0.85;
+            transition: width 0.3s ease;
+        }
+        
+        #mobile-menu a:hover::after {
+            width: calc(100% - 32px); /* Adjusted for the padding */
+        }
+
         /* Fade-in animation */        
         .fade-hero-section {
             opacity: 0;
@@ -190,9 +221,19 @@
                     <a href="#contact" class="nav-link text-gray-700 font-medium hover:text-cyan-600">Contact</a>
                 </div>
                 <div class="lg:hidden">
-                    <button class="text-gray-700 focus:outline-none">
+                    <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
                         <i class="fas fa-bars text-2xl"></i>
                     </button>
+                </div>
+            </div>
+            <!-- Mobile menu, hidden by default -->
+            <div id="mobile-menu" class="lg:hidden hidden">
+                <div class="py-4 space-y-4 bg-white">
+                    <a href="#" class="block py-2 px-4 text-gray-700 hover:bg-cyan-50 hover:text-cyan-600 transition duration-200">Accueil</a>
+                    <a href="#services" class="block py-2 px-4 text-gray-700 hover:bg-cyan-50 hover:text-cyan-600 transition duration-200">Services</a>
+                    <a href="#about" class="block py-2 px-4 text-gray-700 hover:bg-cyan-50 hover:text-cyan-600 transition duration-200">À propos</a>
+                    <a href="#testimonials" class="block py-2 px-4 text-gray-700 hover:bg-cyan-50 hover:text-cyan-600 transition duration-200">Témoignages</a>
+                    <a href="#contact" class="block py-2 px-4 text-gray-700 hover:bg-cyan-50 hover:text-cyan-600 transition duration-200">Contact</a>
                 </div>
             </div>
         </div>    
@@ -847,6 +888,25 @@ t’accompagne avec un coaching structuré, intelligent et adapté à ta vie, to
     </footer>
     <script>
 
+    // Mobile menu toggle
+    document.addEventListener('DOMContentLoaded', function () {
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        // Toggle mobile menu visibility
+        mobileMenuButton.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking on a link
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    });
+
     // Fade-in on scroll for all .fade-section elements
     document.addEventListener('DOMContentLoaded', function () {
         const fadeSections = document.querySelectorAll('.fade-section');
@@ -866,7 +926,7 @@ t’accompagne avec un coaching structuré, intelligent et adapté à ta vie, to
         });
     });
 
-    // Fade-in on scroll for all .fade-section elements
+    // Fade-in on scroll for all .fade-hero-section elements
     document.addEventListener('DOMContentLoaded', function () {
         const fadeSections = document.querySelectorAll('.fade-hero-section');
         const reveal = (entries, observer) => {
