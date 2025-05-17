@@ -16,7 +16,18 @@
             font-family: 'Poppins', sans-serif;
             scroll-behavior: smooth;
         }
+
         /* Fade-in animation */
+
+        .fade-hero-section {
+            opacity: 0;
+            transition: opacity 4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            background-color: #000000;
+        }
+        .fade-hero-section.visible {
+            opacity: 1;
+        }
+
         .fade-section {
             opacity: 0;
             transform: translateY(40px);
@@ -26,6 +37,7 @@
             opacity: 1;
             transform: translateY(0);
         }
+
         .hero {
             background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), 
                         url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
@@ -80,7 +92,7 @@
 <body class="bg-gray-50">
 
     <!-- Navbar -->
-    <nav class="bg-white shadow-md sticky top-0 z-40 fade-section">
+    <nav class="bg-white shadow-md sticky top-0 z-40 fade-hero-section">
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex justify-between items-center h-20">
                 <div class="flex items-center space-x-4">
@@ -104,34 +116,34 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="bg-black text-white min-h-screen flex items-center fade-section">
-  <div class="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+    <section class="bg-black text-white min-h-screen flex items-center fade-hero-section">
+        <div class="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
 
-    <!-- Text Section -->
-    <div class="text-left">
-      <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-        Élevez Votre <span class="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">Performance</span>
-      </h1>
-      <p class="text-xl md:text-2xl mb-10 max-w-xl">
-        Coach certifié basé en région parisienne, spécialisé en musculation, nutrition et conditionnement physique. Partenaire de Fitness Park pour des expériences d'entraînement premium.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4">
-        <a href="#contact" class="btn-primary text-white font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl">
-          Réserver un Bilan Gratuit <i class="fas fa-calendar-check ml-2"></i>
-        </a>
-        <a href="#services" class="bg-white text-blue-600 font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl transition duration-300">
-          Explorer les Services <i class="fas fa-chevron-right ml-2"></i>
-        </a>
-      </div>
-    </div>
+            <!-- Text Section -->
+            <div class="text-left">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                Élevez Votre <span class="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">Performance</span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-10 max-w-xl">
+                Coach certifié basé en région parisienne, spécialisé en musculation, nutrition et conditionnement physique. Partenaire de <span class="text-gray-400">Fitness</span> <span class="text-yellow-500">Park</span> pour des expériences d'entraînement premium.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a href="#contact" class="btn-primary text-white py-4 px-8 rounded-full shadow-lg hover:shadow-xl">
+                Réserver un Bilan Gratuit <i class="fas fa-calendar-check ml-2"></i>
+                </a>
+                <a href="#services" class="bg-white text-blue-600 py-4 px-8 rounded-full shadow-lg hover:bg-blue-50 hover:text-blue-700 hover:shadow-xl transition-all duration-300">
+                    Explorer mes Services <i class="fas fa-chevron-right ml-2"></i>
+                </a>
+            </div>
+            </div>
 
-    <!-- Image Section -->
-    <div>
-      <img src="assets/img/profile.png" alt="Coach Fitness Hero Image" class="w-full h-auto rounded-2xl shadow-lg" />
-    </div>
+            <!-- Image Section -->
+            <div>
+            <img src="assets/img/profile.png" alt="Coach Fitness Hero Image" class="w-full h-auto rounded-2xl shadow-lg" />
+            </div>
 
-  </div>
-</section>
+        </div>
+    </section>
 
     <!-- About Section -->
     <section id="about" class="py-20 bg-gradient-to-br from-gray-50 to-blue-50 fade-section">
@@ -153,20 +165,20 @@
                 <div class="lg:w-1/2">
                     <span class="text-blue-600 font-bold uppercase tracking-wider">À Propos de Moi</span>
                     <h2 class="text-4xl font-bold mt-2 mb-6">BC Athletics</h2>
-                    <p class="text-gray-700 mb-6 text-justify">Je m’appelle Benjamin. Je suis préparateur physique, coach sportif & nutritionniste. Jour après jour, j’allie connaissances scientifiques, instructions et enthousiasme pour accompagner mes clients dans leur quête du progrès et pour optimiser les performances de chacun, du sportif amateur au compétiteur confirmé. J’ai fait de ma passion l’accompagnement des autres vers des objectifs physiques, de performance et de santé sur le court, moyen et long terme. Ma mission est de vous faire progresser de manière intelligente, durable et individualisée, en m’appuyant sur vos caractéristiques morphologiques, vos objectifs et les meilleures données scientifiques disponibles.</p>
+                    <p class="text-gray-700 mb-6 ">Je m’appelle Benjamin. Je suis préparateur physique, coach sportif & nutritionniste. Jour après jour, j’allie connaissances scientifiques, instructions et enthousiasme pour accompagner mes clients dans leur quête du progrès et pour optimiser les performances de chacun, du sportif amateur au compétiteur confirmé. J’ai fait de ma passion l’accompagnement des autres vers des objectifs physiques, de performance et de santé sur le court, moyen et long terme. Ma mission est de vous faire progresser de manière intelligente, durable et individualisée, en m’appuyant sur vos caractéristiques morphologiques, vos objectifs et les meilleures données scientifiques disponibles.</p>
                     <p class="text-gray-700 mb-8">Je serais ravi de te faire atteindre tes objectifs. N’hésite pas à me contactez si toutefois tu serais interressé !</p>
                     <div class="grid grid-cols-2 gap-4 mb-8">
                         <div class="stats-card bg-white p-4 rounded-lg shadow-md text-center">
                             <p class="text-blue-600 font-bold text-3xl">
                                 <span id="clients-count">0</span>+
                             </p>
-                            <p class="text-gray-600">Clients Satisfaits</p>
+                            <p class="text-gray-600">Transformations</p>
                         </div>
                         <div class="stats-card bg-white p-4 rounded-lg shadow-md text-center">
                             <p class="text-blue-600 font-bold text-3xl">
                                 <span id="fidelity-count">0</span>%
                             </p>
-                            <p class="text-gray-600">Fidélisation Client</p>
+                            <p class="text-gray-600">Satisfaction Client</p>
                         </div>
                     </div>
                     <script>
@@ -194,7 +206,7 @@
                             const rect = aboutSection.getBoundingClientRect();
                             if (!hasAnimated && rect.top < window.innerHeight && rect.bottom > 0) {
                                 hasAnimated = true;
-                                animateCount('clients-count', 200, 3000);
+                                animateCount('clients-count', 90, 3000);
                                 animateCount('fidelity-count', 100, 3000);
                                 window.removeEventListener('scroll', onScroll);
                             }
@@ -679,9 +691,29 @@ t’accompagne avec un coaching structuré, intelligent et adapté à ta vie, to
         </div>
     </footer>
     <script>
+
     // Fade-in on scroll for all .fade-section elements
     document.addEventListener('DOMContentLoaded', function () {
         const fadeSections = document.querySelectorAll('.fade-section');
+        const reveal = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        };
+        const observer = new window.IntersectionObserver(reveal, {
+            threshold: 0.15
+        });
+        fadeSections.forEach(section => {
+            observer.observe(section);
+        });
+    });
+
+    // Fade-in on scroll for all .fade-section elements
+    document.addEventListener('DOMContentLoaded', function () {
+        const fadeSections = document.querySelectorAll('.fade-hero-section');
         const reveal = (entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
