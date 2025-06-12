@@ -438,65 +438,204 @@
 
     <!-- Services Section -->
     <section id="services" class="py-20 bg-white fade-section">
-        <div class="container mx-auto px-6">
+        <div class="container mx-auto px-60">
             <div class="text-center mb-16">                
                 <span class="text-cyan-600 font-bold uppercase tracking-wider">Services</span>
                 <h2 class="text-4xl font-bold mt-2">Mes Différents Suivis</h2>
                 <p class="text-gray-600 max-w-2xl mx-auto mt-4">Solutions personnalisées conçues pour vous aider à atteindre vos objectifs physiques de manière efficace et durable.</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">                
-                <div class="service-card bg-gray-50 p-8 rounded-xl border border-gray-200">
-                    <div class="w-16 h-16 bg-cyan-50 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-dumbbell text-cyan-600 text-2xl"></i>
+            <!-- Carousel Services Section -->
+            <div class="relative group w-full">
+                <!-- Carousel Wrapper -->
+                <div class="overflow-x-hidden w-full">
+                    <div id="services-carousel" class="flex transition-transform duration-500 ease-in-out w-full" style="transform: translateX(0);">
+                        <!-- Prise de muscle -->
+                        <div class="service-card bg-gray-50 p-8 rounded-xl border border-gray-200 min-w-[420px] max-w-md flex-shrink-0 mx-2">
+                            <div class="w-16 h-16 bg-cyan-50 rounded-full flex items-center justify-center mb-6">
+                                <i class="fas fa-dumbbell text-cyan-600 text-2xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-4">Prise de muscle</h3>
+                            <p class="text-gray-600 mb-6">Marre de stagner à la salle ? Envie de résultats visibles et concrets ?
+                                Il est temps de passer à la vitesse supérieure avec ce programme Prise de Muscle !</p>
+                            <ul class="space-y-2 mb-6">
+                                <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Plans d'entraînement 100% personnalisés</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Un suivi hebdomadaire</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Jusqu’à 1,2kg de muscle pris par mois</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Une application complète et simple pour faire tes séances</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Les meilleurs techniques d’intensification et astuces pour prendre du muscle</li>
+                            </ul>
+                            <a href="#contact" class="text-cyan-600 font-medium inline-flex items-center">
+                                En savoir plus <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                        <!-- Suivi nutritionnel -->
+                        <div class="service-card bg-gray-50 p-8 rounded-xl border border-gray-200 min-w-[320px] max-w-xs flex-shrink-0 mx-2">
+                            <div class="w-16 h-16 bg-cyan-100 rounded-full flex items-center justify-center mb-6">
+                                <i class="fas fa-utensils text-cyan-600 text-2xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-4">Suivi nutritionnel</h3>
+                            <p class="text-gray-600 mb-6">Tu veux perdre du gras, gagner du muscle ou simplement mieux manger sans te priver ni te prendre
+                                la tête ? Ce suivi nutrition est fait pour toi.</p>
+                            <ul class="space-y-2 mb-6">
+                                <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Un plan alimentaire 100 % personnalisé</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Un suivi régulier</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Ajustements chaque semaine</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Recommandations de suppléments</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Optimisation des macronutriments</li>
+                            </ul>
+                            <a href="#contact" class="text-cyan-600 font-medium inline-flex items-center">
+                                En savoir plus <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                        <!-- Suivi course à pied -->
+                        <div class="service-card bg-gray-50 p-8 rounded-xl border border-gray-200 min-w-[320px] max-w-xs flex-shrink-0 mx-2">
+                            <div class="w-16 h-16 bg-cyan-50 rounded-full flex items-center justify-center mb-6">
+                                <i class="fas fa-heartbeat text-cyan-600 text-2xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-4">Suivi course à pied</h3>
+                            <p class="text-gray-600 mb-6">Que tu prépares ton premier 10 km ou que tu veuilles exploser ton chrono au marathon, je
+                                t’accompagne avec un coaching structuré, intelligent et adapté à ta vie, ton niveau et ton objectif.</p>
+                            <ul class="space-y-2 mb-6">
+                                <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Testing les plus précis selon la science</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Méthodes les plus efficaces pour améliorer tes performances sur 10km, semi-marathon ou marathon</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Suivi régulier et individualisé à 100%</li>
+                            </ul>
+                            <a href="#contact" class="text-cyan-600 font-medium inline-flex items-center">
+                                En savoir plus <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                        <!-- Préparation physique football -->
+                        <div class="service-card bg-gray-50 p-8 rounded-xl border border-gray-200 min-w-[320px] max-w-xs flex-shrink-0 mx-2">
+                            <div class="w-16 h-16 bg-cyan-100 rounded-full flex items-center justify-center mb-6">
+                                <i class="fas fa-futbol text-cyan-600 text-2xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-4">Préparation physique football</h3>
+                            <p class="text-gray-600 mb-6">Un suivi en ligne de préparation physique 100% football, conçu pour t’amener au niveau supérieur, quel que soit ton poste ou ton niveau actuel.</p>
+                            <ul class="space-y-2 mb-6">
+                                <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Structure d’entraînement complète, semaine après semaine</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Méthodes scientifiques pour améliorer : la force, l’explosivité, l’endurance, la vitesse et la mobilité</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Un suivi précis de ta progression</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Des vidéos d’exercices claires pour chaque mouvement</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Des conseils nutrition, récupération et mindset</li>
+                            </ul>
+                            <a href="#contact" class="text-cyan-600 font-medium inline-flex items-center">
+                                En savoir plus <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                        <!-- Perte de gras -->
+                        <div class="service-card bg-gray-50 p-8 rounded-xl border border-gray-200 min-w-[320px] max-w-xs flex-shrink-0 mx-2">
+                            <div class="w-16 h-16 bg-cyan-50 rounded-full flex items-center justify-center mb-6">
+                                <i class="fas fa-fire-alt text-cyan-600 text-2xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-4">Perte de gras</h3>
+                            <p class="text-gray-600 mb-6">Atteins tes objectifs de perte de poids grâce à un suivi personnalisé, des conseils adaptés à ton mode de vie et des méthodes efficaces pour brûler les graisses sans frustration.</p>
+                            <ul class="space-y-2 mb-6">
+                                <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Jusqu’à 1,5kg perdu par semaine !</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Plan d’entraînement et alimentaire inclus</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Explication des techniques d’exécution des meilleurs exercices pour perdre du gras</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Astuces qui te permettront d’atteindre tes objectifs</li>
+                            </ul>
+                            <a href="#contact" class="text-cyan-600 font-medium inline-flex items-center">
+                                En savoir plus <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">Prise de muscle</h3>
-                    <p class="text-gray-600 mb-6">Marre de stagner à la salle ? Envie de résultats visibles et concrets ?
-Il est temps de passer à la vitesse supérieure avec ce programme Prise de Muscle !</p>
-                    <ul class="space-y-2 mb-6">                        
-                        <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Plans d'entraînement 100% personnalisés</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Un suivi hebdomadaire</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Jusqu’à 1,2kg de muscle pris par mois</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Une application complète et simple pour faire tes séances</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Les meilleurs techniques d’intensification et astuces pour prendre du muscle</li>
-                    </ul>
-                    <a href="#contact" class="text-cyan-600 font-medium inline-flex items-center">
-                        En savoir plus <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
                 </div>
-                <div class="service-card bg-gray-50 p-8 rounded-xl border border-gray-200">
-                    <div class="w-16 h-16 bg-cyan-100 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-utensils text-cyan-600 text-2xl"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4">Suivi nutritionnel</h3>
-                    <p class="text-gray-600 mb-6">Tu veux perdre du gras, gagner du muscle ou simplement mieux manger sans te priver ni te prendre
-la tête ? Ce suivi nutrition est fait pour toi.</p>
-                    <ul class="space-y-2 mb-6">
-                        <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Un plan alimentaire 100 % personnalisé</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Un suivi régulier</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Ajustements chaque semaine</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Recommandations de suppléments</li>                        
-                        <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Optimisation des macronutriments</li>
-                    </ul>
-                    <a href="#contact" class="text-cyan-600 font-medium inline-flex items-center">
-                        En savoir plus <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>                
-                <div class="service-card bg-gray-50 p-8 rounded-xl border border-gray-200">
-                    <div class="w-16 h-16 bg-cyan-50 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-heartbeat text-cyan-600 text-2xl"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4">Suivi course à pied</h3>
-                    <p class="text-gray-600 mb-6">Que tu prépares ton premier 10 km ou que tu veuilles exploser ton chrono au marathon, je
-t’accompagne avec un coaching structuré, intelligent et adapté à ta vie, ton niveau et ton objectif.</p>
-                    <ul class="space-y-2 mb-6">
-                        <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Testing les plus précis selon la science</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Méthodes les plus efficaces pour améliorer tes performances sur 10km, semi-marathon ou marathon</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Suivi régulier et individualisé à 100%</li>                    
-                    </ul>
-                    <a href="#contact" class="text-cyan-600 font-medium inline-flex items-center">
-                        En savoir plus <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
+                <!-- Carousel Controls (outside the grid, not overlapping) -->
+                <button id="carousel-prev" class="absolute -left-12 top-1/2 -translate-y-1/2 bg-white border border-gray-200 rounded-full shadow p-2 z-10 hover:bg-cyan-50 transition hidden md:block">
+                    <i class="fas fa-chevron-left text-cyan-600"></i>
+                </button>
+                <button id="carousel-next" class="absolute -right-12 top-1/2 -translate-y-1/2 bg-white border border-gray-200 rounded-full shadow p-2 z-10 hover:bg-cyan-50 transition hidden md:block">
+                    <i class="fas fa-chevron-right text-cyan-600"></i>
+                </button>
+                <!-- Carousel Dots -->
+                <div class="flex justify-center mt-8 space-x-2">
+                    <button class="carousel-dot w-3 h-3 rounded-full bg-cyan-200" data-index="0"></button>
+                    <button class="carousel-dot w-3 h-3 rounded-full bg-cyan-200" data-index="1"></button>
+                    <button class="carousel-dot w-3 h-3 rounded-full bg-cyan-200" data-index="2"></button>
                 </div>
+                <style>
+                    /* Hide scroll bar for aesthetics */
+                    #services-carousel::-webkit-scrollbar { display: none; }
+                    #services-carousel { -ms-overflow-style: none; scrollbar-width: none; }
+                    @media (max-width: 1023px) {
+                        #services-carousel > div { min-width: 90vw; max-width: 90vw; }
+                        #carousel-prev, #carousel-next { left: 0; right: 0; margin: 0; transform: translateY(-50%); }
+                        #carousel-prev { left: 8px; }
+                        #carousel-next { right: 8px; }
+                    }
+                    @media (min-width: 1024px) {
+                        #services-carousel > div { min-width: 320px; max-width: 320px; }
+                        #carousel-prev { left: -3rem; }
+                        #carousel-next { right: -3rem; }
+                    }
+                    .carousel-dot.active { background: #0891b2; }
+                </style>
+                <script>
+                    // Carousel logic
+                    (function() {
+                        const carousel = document.getElementById('services-carousel');
+                        const cards = carousel.children;
+                        const prevBtn = document.getElementById('carousel-prev');
+                        const nextBtn = document.getElementById('carousel-next');
+                        const dots = document.querySelectorAll('.carousel-dot');
+                        let current = 0;
+                        let visibleCards = 3;
+
+                        function updateVisibleCards() {
+                            if (window.innerWidth < 1024) {
+                                visibleCards = 1;
+                            } else {
+                                visibleCards = 3;
+                            }
+                        }
+
+                        function updateCarousel() {
+                            updateVisibleCards();
+                            const cardWidth = cards[0].offsetWidth + 16; // 16px margin (mx-2)
+                            let maxIndex = cards.length - visibleCards;
+                            if (current > maxIndex) current = maxIndex;
+                            if (current < 0) current = 0;
+                            carousel.style.transform = `translateX(-${current * cardWidth}px)`;
+                            dots.forEach((dot, idx) => {
+                                dot.classList.toggle('active', idx === current);
+                            });
+                        }
+
+                        nextBtn.addEventListener('click', () => {
+                            updateVisibleCards();
+                            let maxIndex = cards.length - visibleCards;
+                            if (current < maxIndex) {
+                                current++;
+                                updateCarousel();
+                            }
+                        });
+                        prevBtn.addEventListener('click', () => {
+                            if (current > 0) {
+                                current--;
+                                updateCarousel();
+                            }
+                        });
+                        dots.forEach(dot => {
+                            dot.addEventListener('click', () => {
+                                current = parseInt(dot.dataset.index, 10);
+                                updateCarousel();
+                            });
+                        });
+
+                        window.addEventListener('resize', () => {
+                            updateCarousel();
+                            updateControls();
+                        });
+                        // Show/hide controls based on screen size
+                        function updateControls() {
+                            prevBtn.classList.remove('hidden');
+                            nextBtn.classList.remove('hidden');
+                        }
+                        updateControls();
+                        updateCarousel();
+                    })();
+                </script>
             </div>
         </div>    
     </section>
@@ -880,7 +1019,7 @@ t’accompagne avec un coaching structuré, intelligent et adapté à ta vie, to
                 <div>                    
                     <div class="flex items-center mb-6">
                         <i class="fas fa-dumbbell text-cyan-600 text-3xl mr-3"></i>
-                        <span class="text-2xl font-bold bg-gradient-to-r from-cyan-500 to-cyan-700 bg-clip-text text-transparent">BC Athletics</span>
+                        <span class="text-2xl font-bold text-cyan-600">BC Athletics</span>
                     </div>
                     <p class="text-gray-400 mb-6">Préparateur physique, coach sportif et nutritionniste diplômé en région parisienne.</p>                    <div class="flex space-x-4">
                         <a href="https://www.instagram.com/bc__athletics/" class="text-gray-400 hover:text-purple-500 transition duration-300">
