@@ -644,32 +644,44 @@
                         function updateCarousel() {
                             updateVisibleCards();
                             
+                            // Force recalculation of card dimensions
+                            // This ensures we always have accurate measurements
+                            const firstCard = cards[0];
+                            
                             // Calculate card width differently for mobile vs desktop
                             if (window.innerWidth < 640) {
-                                cardWidth = carousel.clientWidth; // Use full container width on mobile
+                                // On mobile, use the parent container's width
+                                // This ensures full width cards
+                                cardWidth = carousel.parentElement.clientWidth;
                             } else {
-                                cardWidth = cards[0].offsetWidth + 40; // 40px total margin (mx-5)
+                                // For larger screens, include the margins
+                                const cardComputedStyle = window.getComputedStyle(firstCard);
+                                const marginLeft = parseInt(cardComputedStyle.marginLeft, 10);
+                                const marginRight = parseInt(cardComputedStyle.marginRight, 10);
+                                cardWidth = firstCard.offsetWidth + marginLeft + marginRight;
                             }
                             
+                            // Calculate the maximum index based on visible cards
                             let maxIndex = Math.max(0, Math.floor(cards.length - visibleCards));
+                            
+                            // Ensure current index is within valid range
                             current = Math.max(0, Math.min(current, maxIndex));
                             
+                            // Apply the transform with the calculated position
                             carousel.style.transform = `translateX(-${current * cardWidth}px)`;
                             
-                            // Update active dot
+                            // Update active dot to match current position
                             dots.forEach((dot, idx) => {
                                 dot.classList.toggle('active', idx === current);
                             });
 
-                            // Enable/disable navigation buttons
+                            // Enable/disable navigation buttons based on position
                             prevBtn.classList.toggle('opacity-50', current === 0);
                             nextBtn.classList.toggle('opacity-50', current === maxIndex);
-                        }
-
-                        // Next button click handler
+                        }// Next button click handler
                         nextBtn.addEventListener('click', () => {
                             updateVisibleCards();
-                            let maxIndex = cards.length - visibleCards;
+                            let maxIndex = Math.max(0, Math.floor(cards.length - visibleCards));
                             if (current < maxIndex) {
                                 current++;
                                 updateCarousel();
@@ -690,24 +702,31 @@
                                 current = parseInt(dot.dataset.index, 10);
                                 updateCarousel();
                             });
-                        });
-
-                        // Handle touch events for swipe on mobile
-                        carousel.addEventListener('touchstart', (e) => {
+                        });                        // Handle touch events for swipe on mobile - improved with better event handling
+                        function handleTouchStart(e) {
                             touchStartX = e.changedTouches[0].screenX;
-                        }, {passive: true});
+                        }
                         
-                        carousel.addEventListener('touchend', (e) => {
+                        function handleTouchEnd(e) {
                             touchEndX = e.changedTouches[0].screenX;
                             handleSwipe();
-                        }, {passive: true});
-
-                        // Process swipe direction
+                        }
+                        
+                        // Remove any existing listeners and add new ones
+                        carousel.removeEventListener('touchstart', handleTouchStart);
+                        carousel.removeEventListener('touchend', handleTouchEnd);
+                        
+                        carousel.addEventListener('touchstart', handleTouchStart, {passive: true});
+                        carousel.addEventListener('touchend', handleTouchEnd, {passive: true});// Process swipe direction
                         function handleSwipe() {
                             const threshold = 50; // minimum distance for swipe
+                            updateVisibleCards(); // Make sure we have the latest info
+                            
+                            const maxIndex = Math.max(0, Math.floor(cards.length - visibleCards));
+                            
                             if (touchStartX - touchEndX > threshold) {
                                 // Swipe left - go to next
-                                if (current < cards.length - visibleCards) {
+                                if (current < maxIndex) {
                                     current++;
                                     updateCarousel();
                                 }
@@ -760,10 +779,10 @@
         </div>        
         
         <!-- Full Width Testimonials -->
-        <div class="relative group -mx-4 sm:-mx-6 md:-mx-8 lg:-mx-16">
+        <div class="relative group -mx-4 sm:-mx-6 md:-mx-8 lg:-mx-16" id="testimonials-container">
             <div class="overflow-x-hidden relative w-full">
                 <div class="absolute inset-x-0"></div>
-                <div class="flex space-x-8 animate-scroll-testimonials group-hover:paused-testimonials ml-0">
+                <div class="flex space-x-8 animate-scroll-testimonials group-hover:paused-testimonials ml-0" id="testimonials-carousel">
                     
                     <!-- Testimonial 1 -->
                     <div class="testimonial-card p-8 rounded-xl min-w-[350px] max-w-md">
@@ -937,6 +956,19 @@
             .animate-scroll-testimonials > div {
                 min-width: 280px;
             }
+            }
+              /* Mobile testimonials swipe styles */
+            @media (max-width: 639px) {
+                #testimonials-carousel {
+                    touch-action: pan-y; /* Allow vertical scrolling but capture horizontal */
+                }
+                .testimonial-card {
+                    min-width: 64vw !important; /* Make cards smaller (25% reduction from 85vw) */
+                    max-width: 64vw !important;
+                }
+                #testimonials-container .overflow-x-hidden {
+                    overflow-x: hidden !important; /* Ensure hidden overflow on mobile */
+                }
             }
         </style>
     </section>
@@ -1253,6 +1285,137 @@
             observer.observe(section);
         });
     });
+    </script>
+    <!-- Custom JS for Testimonials Swipe -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Testimonials swipe functionality
+            const testimonialsContainer = document.getElementById('testimonials-container');
+            const testimonialsCarousel = document.getElementById('testimonials-carousel');
+            
+            if (testimonialsCarousel && testimonialsContainer) {
+                let touchStartX = 0;
+                let touchEndX = 0;
+                let startTranslateX = 0;
+                let currentTranslateX = 0;
+                let isPaused = false;
+                let animationPlayState = '';
+                
+                // Store animation play state
+                function pauseAnimation() {
+                    if (!isPaused) {
+                        animationPlayState = window.getComputedStyle(testimonialsCarousel).animationPlayState;
+                        testimonialsCarousel.style.animationPlayState = 'paused';
+                        isPaused = true;
+                    }
+                }
+                
+                // Restore animation play state
+                function resumeAnimation() {
+                    if (isPaused) {
+                        testimonialsCarousel.style.animationPlayState = '';
+                        isPaused = false;
+                    }
+                }
+                
+                // Handle touch events for swipe on testimonials
+                function handleTouchStart(e) {
+                    touchStartX = e.changedTouches[0].screenX;
+                    pauseAnimation(); 
+                    // Get the current transform position
+                    const transform = window.getComputedStyle(testimonialsCarousel).transform;
+                    const matrix = new DOMMatrixReadOnly(transform);
+                    startTranslateX = matrix.m41; // Get the X translation value
+                    currentTranslateX = startTranslateX;
+                }
+                
+                function handleTouchMove(e) {
+                    if (!isPaused) return;
+                    
+                    const touchCurrentX = e.changedTouches[0].screenX;
+                    const diff = touchCurrentX - touchStartX;
+                    
+                    // Apply drag movement
+                    currentTranslateX = startTranslateX + diff;
+                    testimonialsCarousel.style.transform = `translateX(${currentTranslateX}px)`;
+                    
+                    // Prevent default to stop scrolling
+                    e.preventDefault();
+                }
+                
+                function handleTouchEnd(e) {
+                    if (!isPaused) return;
+                    
+                    touchEndX = e.changedTouches[0].screenX;
+                    const diffX = touchEndX - touchStartX;
+                    
+                    // If significant swipe, move to next/previous
+                    const threshold = 50;
+                    const carouselWidth = testimonialsCarousel.offsetWidth;
+                    const containerWidth = testimonialsContainer.offsetWidth;
+                    
+                    // Get the max limit for translation (right edge)
+                    const minTranslate = containerWidth - carouselWidth;
+                    
+                    // Enforce boundaries with animation
+                    if (currentTranslateX > 0) {
+                        animateToPosition(0);
+                    } else if (currentTranslateX < minTranslate) {
+                        animateToPosition(minTranslate);                    } else if (Math.abs(diffX) > threshold) {
+                        // User swiped significantly, move one card width
+                        // Calculate card width based on device size
+                        let cardWidth;
+                        if (window.innerWidth <= 639) {
+                            cardWidth = window.innerWidth * 0.64 + 32; // 64% of viewport width + margin for mobile
+                        } else {
+                            cardWidth = 350 + 32; // Default card width + margin for desktop
+                        }
+                        const moveAmount = Math.sign(diffX) * cardWidth;
+                        let newPosition = startTranslateX + moveAmount;
+                        
+                        // Check boundaries
+                        newPosition = Math.min(0, newPosition);
+                        newPosition = Math.max(minTranslate, newPosition);
+                        
+                        animateToPosition(newPosition);
+                    } else {
+                        // Small movement, return to starting position
+                        animateToPosition(startTranslateX);
+                    }
+                }
+                
+                function animateToPosition(position) {
+                    // Create a smooth animation to the target position
+                    testimonialsCarousel.style.transition = 'transform 0.3s ease-out';
+                    testimonialsCarousel.style.transform = `translateX(${position}px)`;
+                    
+                    // Reset after animation completes
+                    setTimeout(() => {
+                        testimonialsCarousel.style.transition = '';
+                        resumeAnimation();
+                    }, 300);
+                }
+                
+                // Mobile device detection for better performance
+                const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+                
+                // Add event listeners with passive: false to prevent scroll during swipe
+                testimonialsCarousel.addEventListener('touchstart', handleTouchStart, { passive: false });
+                
+                if (isMobile) {
+                    testimonialsCarousel.addEventListener('touchmove', handleTouchMove, { passive: false });
+                }
+                
+                testimonialsCarousel.addEventListener('touchend', handleTouchEnd, { passive: false });
+                
+                // Reset transform on window resize
+                window.addEventListener('resize', () => {
+                    if (!isPaused) {
+                        testimonialsCarousel.style.transform = '';
+                    }
+                });
+            }
+        });
     </script>
 </body>
 </html>
