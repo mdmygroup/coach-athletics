@@ -445,12 +445,10 @@
                 <p class="text-gray-600 max-w-2xl mx-auto mt-4">Solutions personnalisées conçues pour vous aider à atteindre vos objectifs physiques de manière efficace et durable.</p>
             </div>
             <!-- Carousel Services Section -->
-            <div class="relative group w-full">
-                <!-- Carousel Wrapper -->
-                <div class="overflow-x-hidden w-full">
-                    <div id="services-carousel" class="flex transition-transform duration-500 ease-in-out w-full" style="transform: translateX(0);">
-                        <!-- Prise de muscle -->
-                        <div class="service-card bg-gray-50 p-8 rounded-xl border border-gray-200 min-w-[300px] max-w-sm flex-shrink-0 mx-2 shadow-sm hover:shadow-md transition-shadow">
+            <div class="relative group w-full">                <!-- Carousel Wrapper -->
+                <div class="overflow-x-hidden w-full px-0 sm:px-2">
+                    <div id="services-carousel" class="flex transition-transform duration-500 ease-in-out w-full" style="transform: translateX(0);">                        <!-- Prise de muscle -->
+                        <div class="service-card bg-gray-50 p-8 rounded-xl border border-gray-200 min-w-[380px] max-w-md flex-shrink-0 mx-5 shadow-sm hover:shadow-md transition-shadow">
                             <div class="w-16 h-16 bg-cyan-50 rounded-full flex items-center justify-center mb-6">
                                 <i class="fas fa-dumbbell text-cyan-600 text-2xl"></i>
                             </div>
@@ -467,9 +465,8 @@
                             <a href="#contact" class="text-cyan-600 font-medium inline-flex items-center">
                                 En savoir plus <i class="fas fa-arrow-right ml-2"></i>
                             </a>
-                        </div>                        
-                        <!-- Suivi nutritionnel -->
-                        <div class="service-card bg-gray-50 p-8 rounded-xl border border-gray-200 min-w-[300px] max-w-sm flex-shrink-0 mx-2 shadow-sm hover:shadow-md transition-shadow">
+                        </div>                        <!-- Suivi nutritionnel -->
+                        <div class="service-card bg-gray-50 p-8 rounded-xl border border-gray-200 min-w-[380px] max-w-md flex-shrink-0 mx-5 shadow-sm hover:shadow-md transition-shadow">
                             <div class="w-16 h-16 bg-cyan-100 rounded-full flex items-center justify-center mb-6">
                                 <i class="fas fa-utensils text-cyan-600 text-2xl"></i>
                             </div>
@@ -486,9 +483,8 @@
                             <a href="#contact" class="text-cyan-600 font-medium inline-flex items-center">
                                 En savoir plus <i class="fas fa-arrow-right ml-2"></i>
                             </a>
-                        </div>                        
-                        <!-- Suivi course à pied -->
-                        <div class="service-card bg-gray-50 p-8 rounded-xl border border-gray-200 min-w-[300px] max-w-sm flex-shrink-0 mx-2 shadow-sm hover:shadow-md transition-shadow">
+                        </div>                        <!-- Suivi course à pied -->
+                        <div class="service-card bg-gray-50 p-8 rounded-xl border border-gray-200 min-w-[380px] max-w-md flex-shrink-0 mx-5 shadow-sm hover:shadow-md transition-shadow">
                             <div class="w-16 h-16 bg-cyan-50 rounded-full flex items-center justify-center mb-6">
                                 <i class="fas fa-heartbeat text-cyan-600 text-2xl"></i>
                             </div>
@@ -503,9 +499,8 @@
                             <a href="#contact" class="text-cyan-600 font-medium inline-flex items-center">
                                 En savoir plus <i class="fas fa-arrow-right ml-2"></i>
                             </a>
-                        </div>                        
-                        <!-- Préparation physique football -->
-                        <div class="service-card bg-gray-50 p-8 rounded-xl border border-gray-200 min-w-[300px] max-w-sm flex-shrink-0 mx-2 shadow-sm hover:shadow-md transition-shadow">
+                        </div>                        <!-- Préparation physique football -->
+                        <div class="service-card bg-gray-50 p-8 rounded-xl border border-gray-200 min-w-[380px] max-w-md flex-shrink-0 mx-5 shadow-sm hover:shadow-md transition-shadow">
                             <div class="w-16 h-16 bg-cyan-100 rounded-full flex items-center justify-center mb-6">
                                 <i class="fas fa-futbol text-cyan-600 text-2xl"></i>
                             </div>
@@ -521,9 +516,8 @@
                             <a href="#contact" class="text-cyan-600 font-medium inline-flex items-center">
                                 En savoir plus <i class="fas fa-arrow-right ml-2"></i>
                             </a>
-                        </div>                        
-                        <!-- Perte de gras -->
-                        <div class="service-card bg-gray-50 p-8 rounded-xl border border-gray-200 min-w-[300px] max-w-sm flex-shrink-0 mx-2 shadow-sm hover:shadow-md transition-shadow">
+                        </div>                        <!-- Perte de gras -->
+                        <div class="service-card bg-gray-50 p-8 rounded-xl border border-gray-200 min-w-[380px] max-w-md flex-shrink-0 mx-5 shadow-sm hover:shadow-md transition-shadow">
                             <div class="w-16 h-16 bg-cyan-50 rounded-full flex items-center justify-center mb-6">
                                 <i class="fas fa-fire-alt text-cyan-600 text-2xl"></i>
                             </div>
@@ -560,12 +554,21 @@
                     /* Hide scroll bar for aesthetics */
                     #services-carousel::-webkit-scrollbar { display: none; }
                     #services-carousel { -ms-overflow-style: none; scrollbar-width: none; }
-                    
-                    /* Small screens */
+                      /* Small screens */
                     @media (max-width: 639px) {
                         #services-carousel > div { 
-                            min-width: calc(100% - 16px); 
-                            max-width: calc(100% - 16px);
+                            min-width: 100%;
+                            max-width: 100%;
+                            margin-left: 0;
+                            margin-right: 0;
+                        }
+                        .service-card {
+                            width: 100%;
+                            min-width: 100% !important;
+                            max-width: 100% !important;
+                            margin-left: 0 !important;
+                            margin-right: 0 !important;
+                            padding: 6% !important;
                         }
                         #carousel-prev, #carousel-next { 
                             display: block;
@@ -574,11 +577,10 @@
                             transform: translateY(-50%); 
                             z-index: 20;
                         }
-                        #carousel-prev { left: 0; }
-                        #carousel-next { right: 0; }
+                        #carousel-prev { left: 4px; }
+                        #carousel-next { right: 4px; }
                     }
-                    
-                    /* Medium screens */
+                      /* Medium screens */
                     @media (min-width: 640px) and (max-width: 1023px) {
                         #services-carousel > div { 
                             min-width: calc(85% - 16px);
@@ -588,14 +590,22 @@
                         #carousel-next { right: -12px; }
                     }
                     
-                    /* Large screens */
+                    /* Specific mobile adjustments for content */
+                    @media (max-width: 480px) {
+                        .service-card ul.space-y-2 {
+                            padding-left: 4px;
+                        }
+                        .service-card li {
+                            font-size: 0.95rem;
+                        }
+                    }                      /* Large screens */
                     @media (min-width: 1024px) {
                         #services-carousel > div { 
-                            min-width: 300px; 
-                            max-width: 300px;
+                            min-width: 380px; 
+                            max-width: 380px;
                         }
-                        #carousel-prev { left: -16px; }
-                        #carousel-next { right: -16px; }
+                        #carousel-prev { left: -24px; }
+                        #carousel-next { right: -24px; }
                     }
                     
                     /* Active dot state */
@@ -621,25 +631,27 @@
                         let visibleCards = 3;
                         let cardWidth = 0;
                         let touchStartX = 0;
-                        let touchEndX = 0;
-
-                        // Determine number of visible cards based on screen width
+                        let touchEndX = 0;                        // Determine number of visible cards based on screen width
                         function updateVisibleCards() {
                             if (window.innerWidth < 640) {
                                 visibleCards = 1;
                             } else if (window.innerWidth < 1024) {
-                                visibleCards = 2;
+                                visibleCards = 1.5; // Show partial second card on medium screens
                             } else {
-                                visibleCards = 3;
+                                visibleCards = 3.05; // Show just a glimpse of the fourth card on large screens
                             }
-                        }
-
-                        // Update carousel position and active dots
+                        }                        // Update carousel position and active dots
                         function updateCarousel() {
                             updateVisibleCards();
-                            cardWidth = cards[0].offsetWidth + 16; // 16px margin (mx-2)
                             
-                            let maxIndex = Math.max(0, cards.length - visibleCards);
+                            // Calculate card width differently for mobile vs desktop
+                            if (window.innerWidth < 640) {
+                                cardWidth = carousel.clientWidth; // Use full container width on mobile
+                            } else {
+                                cardWidth = cards[0].offsetWidth + 40; // 40px total margin (mx-5)
+                            }
+                            
+                            let maxIndex = Math.max(0, Math.floor(cards.length - visibleCards));
                             current = Math.max(0, Math.min(current, maxIndex));
                             
                             carousel.style.transform = `translateX(-${current * cardWidth}px)`;
