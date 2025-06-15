@@ -453,6 +453,7 @@
                         height: 8px;
                         background: #e0f2fea4; /* cyan-50 */
                         border-radius: 6px;
+                        display: block !important;
                     }
                     #services .overflow-x-auto::-webkit-scrollbar-thumb {
                         background: linear-gradient(90deg, #38bff82a 0%, #0e7490 100%);
@@ -466,8 +467,11 @@
                     #services .overflow-x-auto {
                         scrollbar-color: #164e63b6 #e0f2fe;
                     }
-                    /* Responsive card width for mobile */
+                    /* Show scrollbar on mobile */
                     @media (max-width: 639px) {
+                        #services .overflow-x-auto::-webkit-scrollbar {
+                            display: block !important;
+                        }
                         #services .service-card {
                             min-width: 85vw !important;
                             max-width: 85vw !important;
