@@ -445,112 +445,155 @@
                 <h2 class="text-4xl font-bold mt-2">Mes Différents Suivis</h2>
                 <p class="text-gray-600 max-w-2xl mx-auto mt-4">Solutions personnalisées conçues pour vous aider à atteindre vos objectifs physiques de manière efficace et durable.</p>
             </div>
-            <!-- Simple Horizontal Scrollable Cards -->
-            <div class="overflow-x-auto overflow-visible flex space-x-6 pb-4 snap-x snap-mandatory relative z-20" style="padding-top: 3px;">
-                <style>
-                    /* Custom scrollbar for horizontal service cards */
-                    #services .overflow-x-auto::-webkit-scrollbar {
-                        height: 8px;
-                        background: #e0f2fea4; /* cyan-50 */
-                        border-radius: 6px;
-                        display: block !important;
-                    }
-                    #services .overflow-x-auto::-webkit-scrollbar-thumb {
-                        background: linear-gradient(90deg, #38bff82a 0%, #0e7490 100%);
-                        border-radius: 6px;
-                        transition: background 0.3s;
-                    }
-                    #services .overflow-x-auto::-webkit-scrollbar-thumb:hover {
-                        background: linear-gradient(90deg, #164e63 0%, #38bdf8 100%);
-                    }
-                    /* Firefox */
-                    #services .overflow-x-auto {
-                        scrollbar-color: #164e63b6 #e0f2fe;
-                    }
-                    /* Show scrollbar on mobile */
-                    @media (max-width: 639px) {
-                        #services .overflow-x-auto::-webkit-scrollbar {
-                            display: block !important;
-                        }
-                        #services .service-card {
-                            min-width: 85vw !important;
-                            max-width: 85vw !important;
-                        }
-                    }
-                </style>
-                <div class="service-card bg-slate-100 p-8 rounded-xl border border-gray-300 min-w-[430px] max-w-xs flex-shrink-0 shadow-sm hover:shadow-md transition-shadow snap-start">
-                    <div class="w-16 h-16 bg-cyan-50 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-dumbbell text-cyan-600 text-2xl"></i>
+            <!-- Simple Horizontal Scrollable Cards with Dots and Arrows -->
+            <div id="services-scroll-wrapper" class="relative">
+                <div class="flex space-x-6 pb-4 pt-4 snap-x snap-mandatory overflow-x-auto overflow-visible" id="services-cards">
+                    <div class="service-card bg-slate-100 p-8 rounded-xl border border-gray-300 min-w-[430px] max-w-xs flex-shrink-0 shadow-sm hover:shadow-md transition-shadow snap-start">
+                        <div class="w-16 h-16 bg-cyan-50 rounded-full flex items-center justify-center mb-6">
+                            <i class="fas fa-dumbbell text-cyan-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Prise de muscle</h3>
+                        <p class="text-gray-600 mb-6">Marre de stagner à la salle ? Envie de résultats visibles et concrets ? Il est temps de passer à la vitesse supérieure avec ce programme Prise de Muscle !</p>
+                        <ul class="space-y-2 mb-6 text-sm">
+                            <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Plans d'entraînement 100% personnalisés</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Un suivi hebdomadaire</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Jusqu’à 1,2kg de muscle pris par mois</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Application simple pour tes séances</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Astuces pour prendre du muscle</li>
+                        </ul>
+                        <a href="#contact" class="text-cyan-600 font-medium inline-flex items-center">En savoir plus <i class="fas fa-arrow-right ml-2"></i></a>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">Prise de muscle</h3>
-                    <p class="text-gray-600 mb-6">Marre de stagner à la salle ? Envie de résultats visibles et concrets ? Il est temps de passer à la vitesse supérieure avec ce programme Prise de Muscle !</p>
-                    <ul class="space-y-2 mb-6 text-sm">
-                        <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Plans d'entraînement 100% personnalisés</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Un suivi hebdomadaire</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Jusqu’à 1,2kg de muscle pris par mois</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Application simple pour tes séances</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Astuces pour prendre du muscle</li>
-                    </ul>
-                    <a href="#contact" class="text-cyan-600 font-medium inline-flex items-center">En savoir plus <i class="fas fa-arrow-right ml-2"></i></a>
-                </div>
-                <div class="service-card bg-slate-100 p-8 rounded-xl border border-gray-300 min-w-[430px] max-w-xs flex-shrink-0 shadow-sm hover:shadow-md transition-shadow snap-start">
-                    <div class="w-16 h-16 bg-cyan-100 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-utensils text-cyan-600 text-2xl"></i>
+                    <div class="service-card bg-slate-100 p-8 rounded-xl border border-gray-300 min-w-[430px] max-w-xs flex-shrink-0 shadow-sm hover:shadow-md transition-shadow snap-start">
+                        <div class="w-16 h-16 bg-cyan-100 rounded-full flex items-center justify-center mb-6">
+                            <i class="fas fa-utensils text-cyan-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Suivi nutritionnel</h3>
+                        <p class="text-gray-600 mb-6">Tu veux perdre du gras, gagner du muscle ou simplement mieux manger sans te priver ? Ce suivi nutrition est fait pour toi.</p>
+                        <ul class="space-y-2 mb-6 text-sm">
+                            <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Plan alimentaire personnalisé</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Suivi régulier</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Ajustements chaque semaine</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Recommandations de suppléments</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Optimisation des macronutriments</li>
+                        </ul>
+                        <a href="#contact" class="text-cyan-600 font-medium inline-flex items-center">En savoir plus <i class="fas fa-arrow-right ml-2"></i></a>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">Suivi nutritionnel</h3>
-                    <p class="text-gray-600 mb-6">Tu veux perdre du gras, gagner du muscle ou simplement mieux manger sans te priver ? Ce suivi nutrition est fait pour toi.</p>
-                    <ul class="space-y-2 mb-6 text-sm">
-                        <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Plan alimentaire personnalisé</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Suivi régulier</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Ajustements chaque semaine</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Recommandations de suppléments</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Optimisation des macronutriments</li>
-                    </ul>
-                    <a href="#contact" class="text-cyan-600 font-medium inline-flex items-center">En savoir plus <i class="fas fa-arrow-right ml-2"></i></a>
-                </div>
-                <div class="service-card bg-slate-100 p-8 rounded-xl border border-gray-300 min-w-[430px] max-w-xs flex-shrink-0 shadow-sm hover:shadow-md transition-shadow snap-start">
-                    <div class="w-16 h-16 bg-cyan-50 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-heartbeat text-cyan-600 text-2xl"></i>
+                    <div class="service-card bg-slate-100 p-8 rounded-xl border border-gray-300 min-w-[430px] max-w-xs flex-shrink-0 shadow-sm hover:shadow-md transition-shadow snap-start">
+                        <div class="w-16 h-16 bg-cyan-50 rounded-full flex items-center justify-center mb-6">
+                            <i class="fas fa-heartbeat text-cyan-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Suivi course à pied</h3>
+                        <p class="text-gray-600 mb-6">Prépare ton 10 km ou explose ton chrono au marathon avec un coaching structuré et adapté à ton niveau.</p>
+                        <ul class="space-y-2 mb-6 text-sm">
+                            <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Testing précis selon la science</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Méthodes efficaces pour progresser</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Suivi individualisé</li>
+                        </ul>
+                        <a href="#contact" class="text-cyan-600 font-medium inline-flex items-center">En savoir plus <i class="fas fa-arrow-right ml-2"></i></a>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">Suivi course à pied</h3>
-                    <p class="text-gray-600 mb-6">Prépare ton 10 km ou explose ton chrono au marathon avec un coaching structuré et adapté à ton niveau.</p>
-                    <ul class="space-y-2 mb-6 text-sm">
-                        <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Testing précis selon la science</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Méthodes efficaces pour progresser</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Suivi individualisé</li>
-                    </ul>
-                    <a href="#contact" class="text-cyan-600 font-medium inline-flex items-center">En savoir plus <i class="fas fa-arrow-right ml-2"></i></a>
-                </div>
-                <div class="service-card bg-slate-100 p-8 rounded-xl border border-gray-300 min-w-[430px] max-w-xs flex-shrink-0 shadow-sm hover:shadow-md transition-shadow snap-start">
-                    <div class="w-16 h-16 bg-cyan-100 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-futbol text-cyan-600 text-2xl"></i>
+                    <div class="service-card bg-slate-100 p-8 rounded-xl border border-gray-300 min-w-[430px] max-w-xs flex-shrink-0 shadow-sm hover:shadow-md transition-shadow snap-start">
+                        <div class="w-16 h-16 bg-cyan-100 rounded-full flex items-center justify-center mb-6">
+                            <i class="fas fa-futbol text-cyan-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Préparation physique football</h3>
+                        <p class="text-gray-600 mb-6">Un suivi en ligne 100% football, conçu pour t’amener au niveau supérieur, quel que soit ton poste.</p>
+                        <ul class="space-y-2 mb-6 text-sm">
+                            <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Structure d’entraînement complète</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Méthodes scientifiques pour progresser</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Suivi précis de ta progression</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Vidéos d’exercices claires</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Conseils nutrition et récupération</li>
+                        </ul>
+                        <a href="#contact" class="text-cyan-600 font-medium inline-flex items-center">En savoir plus <i class="fas fa-arrow-right ml-2"></i></a>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">Préparation physique football</h3>
-                    <p class="text-gray-600 mb-6">Un suivi en ligne 100% football, conçu pour t’amener au niveau supérieur, quel que soit ton poste.</p>
-                    <ul class="space-y-2 mb-6 text-sm">
-                        <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Structure d’entraînement complète</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Méthodes scientifiques pour progresser</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Suivi précis de ta progression</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Vidéos d’exercices claires</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Conseils nutrition et récupération</li>
-                    </ul>
-                    <a href="#contact" class="text-cyan-600 font-medium inline-flex items-center">En savoir plus <i class="fas fa-arrow-right ml-2"></i></a>
-                </div>
-                <div class="service-card bg-slate-100 p-8 rounded-xl border border-gray-300 min-w-[430px] max-w-xs flex-shrink-0 shadow-sm hover:shadow-md transition-shadow snap-start">
-                    <div class="w-16 h-16 bg-cyan-50 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-fire-alt text-cyan-600 text-2xl"></i>
+                    <div class="service-card bg-slate-100 p-8 rounded-xl border border-gray-300 min-w-[430px] max-w-xs flex-shrink-0 shadow-sm hover:shadow-md transition-shadow snap-start">
+                        <div class="w-16 h-16 bg-cyan-50 rounded-full flex items-center justify-center mb-6">
+                            <i class="fas fa-fire-alt text-cyan-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Perte de gras</h3>
+                        <p class="text-gray-600 mb-6">Atteins tes objectifs de perte de poids grâce à un suivi personnalisé et des méthodes efficaces.</p>
+                        <ul class="space-y-2 mb-6 text-sm">
+                            <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Jusqu’à 1,5kg perdu par semaine</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Plan d’entraînement et alimentaire inclus</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Techniques d’exécution expliquées</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Astuces pour atteindre tes objectifs</li>
+                        </ul>
+                        <a href="#contact" class="text-cyan-600 font-medium inline-flex items-center">En savoir plus <i class="fas fa-arrow-right ml-2"></i></a>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">Perte de gras</h3>
-                    <p class="text-gray-600 mb-6">Atteins tes objectifs de perte de poids grâce à un suivi personnalisé et des méthodes efficaces.</p>
-                    <ul class="space-y-2 mb-6 text-sm">
-                        <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Jusqu’à 1,5kg perdu par semaine</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Plan d’entraînement et alimentaire inclus</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Techniques d’exécution expliquées</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-cyan-600 mr-2"></i> Astuces pour atteindre tes objectifs</li>
-                    </ul>
-                    <a href="#contact" class="text-cyan-600 font-medium inline-flex items-center">En savoir plus <i class="fas fa-arrow-right ml-2"></i></a>
                 </div>
+                <!-- Arrows -->
+                <button id="services-arrow-left" class="absolute left-0 top-1/2 -translate-y-1/2 bg-white border border-gray-300 rounded-full shadow p-2 z-30 hover:bg-cyan-50 transition-all focus:outline-none focus:ring-2 focus:ring-cyan-500" aria-label="Précédent" style="display:none">
+                    <i class="fas fa-chevron-left text-cyan-600"></i>
+                </button>
+                <button id="services-arrow-right" class="absolute right-0 top-1/2 -translate-y-1/2 bg-white border border-gray-300 rounded-full shadow p-2 z-30 hover:bg-cyan-50 transition-all focus:outline-none focus:ring-2 focus:ring-cyan-500" aria-label="Suivant">
+                    <i class="fas fa-chevron-right text-cyan-600"></i>
+                </button>
+                <!-- Dots -->
+                <div id="services-dots" class="flex justify-center mt-6 space-x-2"></div>
             </div>
+            <script>
+            // Carousel logic for dots/arrows
+            (function() {
+                const container = document.getElementById('services-cards');
+                const cards = Array.from(container.children);
+                const leftBtn = document.getElementById('services-arrow-left');
+                const rightBtn = document.getElementById('services-arrow-right');
+                const dotsContainer = document.getElementById('services-dots');
+                let current = 0;
+                // Create dots
+                cards.forEach((_, i) => {
+                    const dot = document.createElement('button');
+                    dot.className = 'w-3 h-3 rounded-full bg-cyan-200 focus:outline-none';
+                    if (i === 0) dot.classList.add('bg-cyan-600');
+                    dot.setAttribute('aria-label', 'Aller à la carte ' + (i+1));
+                    dot.addEventListener('click', () => scrollToCard(i));
+                    dotsContainer.appendChild(dot);
+                });
+                function updateDots(idx) {
+                    dotsContainer.childNodes.forEach((dot, i) => {
+                        dot.classList.toggle('bg-cyan-600', i === idx);
+                        dot.classList.toggle('bg-cyan-200', i !== idx);
+                    });
+                }
+                function scrollToCard(idx) {
+                    const card = cards[idx];
+                    if (!card) return;
+                    card.scrollIntoView({behavior: 'smooth', inline: 'center', block: 'nearest'});
+                    current = idx;
+                    updateDots(idx);
+                    updateArrows();
+                }
+                function updateArrows() {
+                    leftBtn.style.display = current === 0 ? 'none' : '';
+                    rightBtn.style.display = current === cards.length - 1 ? 'none' : '';
+                }
+                leftBtn.addEventListener('click', () => {
+                    if (current > 0) scrollToCard(current - 1);
+                });
+                rightBtn.addEventListener('click', () => {
+                    if (current < cards.length - 1) scrollToCard(current + 1);
+                });
+                // Optional: update current dot on manual scroll
+                container.addEventListener('scroll', () => {
+                    let closest = 0;
+                    let minDist = Infinity;
+                    cards.forEach((card, i) => {
+                        const rect = card.getBoundingClientRect();
+                        const dist = Math.abs(rect.left - container.getBoundingClientRect().left);
+                        if (dist < minDist) {
+                            minDist = dist;
+                            closest = i;
+                        }
+                    });
+                    if (closest !== current) {
+                        current = closest;
+                        updateDots(current);
+                        updateArrows();
+                    }
+                });
+                updateArrows();
+            })();
+            </script>
         </div>
     </section>
     
@@ -725,8 +768,7 @@
                     </div>
                     
                 </div>
-            </div>
-        </div>        
+            </div>        
         <style>
             @keyframes scroll-testimonials {
             0% { transform: translateX(0); }
@@ -1188,5 +1230,15 @@
             }
         });
     </script>
+    <style>
+        /* Hide horizontal scrollbar for all browsers */
+        #services-cards {
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE 10+ */
+        }
+        #services-cards::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+    </style>
 </body>
 </html>
