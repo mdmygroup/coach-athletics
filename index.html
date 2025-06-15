@@ -787,11 +787,8 @@
                 min-width: 280px;
             }
             }
-              /* Mobile testimonials swipe styles */
+            /* Mobile testimonials swipe styles */
             @media (max-width: 639px) {
-                #testimonials-carousel {
-                    touch-action: pan-y; /* Allow vertical scrolling but capture horizontal */
-                }
                 .testimonial-card {
                     min-width: 85vw !important; /* Make cards smaller (25% reduction from 85vw) */
                     max-width: 85vw !important;
@@ -1238,6 +1235,13 @@
         }
         #services-cards::-webkit-scrollbar {
             display: none; /* Chrome, Safari, Opera */
+        }
+        /* Responsive card width for mobile */
+        @media (max-width: 639px) {
+            #services-cards .service-card {
+                min-width: 85vw !important;
+                max-width: 85vw !important;
+            }
         }
     </style>
 </body>
