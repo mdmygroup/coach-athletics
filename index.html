@@ -132,7 +132,25 @@
         .service-card:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
-        }        
+        }    
+        
+        /* Hide horizontal scrollbar for all browsers */
+        #services-cards {
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE 10+ */
+        }
+        #services-cards::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+
+        /* Responsive card width for mobile */
+        @media (max-width: 639px) {
+            #services-cards .service-card {
+                min-width: 85vw !important;
+                max-width: 85vw !important;
+            }
+        }
+
         .testimonial-card {
             background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(10px);
@@ -144,6 +162,14 @@
         .testimonial-card .fa-star {
             color: #fde68a !important;
         }
+
+        /* Responsive card width for mobile */
+        @media (max-width: 639px) {
+            .testimonial-card {
+                width: 55vw !important;
+            }
+        }
+
         .stats-card {
             transition: all 0.3s ease;
         }        
@@ -770,17 +796,34 @@
                 </div>
             </div>        
         <style>
+            /* 
+            Keyframes for horizontal scrolling animation of testimonials.
+            The content moves from its original position to -50% (half its width), creating a seamless loop.
+            */
             @keyframes scroll-testimonials {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
             }
+            /*
+            Applies the scrolling animation to the testimonials carousel.
+            - width: max-content ensures the container fits all testimonial cards horizontally.
+            - animation: runs the scroll-testimonials keyframes infinitely over 80 seconds.
+            - padding-right: adds space at the end for visual separation.
+            */
             .animate-scroll-testimonials {
             width: max-content;
             animation: scroll-testimonials 80s linear infinite;
             padding-right: 2rem; /* Add padding to the right of the scrolling content */
             }
-            .group:hover .animate-scroll-testimonials {
-            animation-play-state: paused;
+            /*
+            Pauses the scrolling animation when the parent .group is hovered.
+            This allows users to read testimonials without movement.
+            Only applies on devices that support hover (desktops).
+            */
+            @media (hover: hover) and (pointer: fine) {
+                .group:hover .animate-scroll-testimonials {
+                    animation-play-state: paused;
+                }
             }
         </style>
     </section>
@@ -1212,22 +1255,5 @@
             }
         });
     </script>
-    <style>
-        /* Hide horizontal scrollbar for all browsers */
-        #services-cards {
-            scrollbar-width: none; /* Firefox */
-            -ms-overflow-style: none; /* IE 10+ */
-        }
-        #services-cards::-webkit-scrollbar {
-            display: none; /* Chrome, Safari, Opera */
-        }
-        /* Responsive card width for mobile */
-        @media (max-width: 639px) {
-            #services-cards .service-card {
-                min-width: 85vw !important;
-                max-width: 85vw !important;
-            }
-        }
-    </style>
 </body>
 </html>
